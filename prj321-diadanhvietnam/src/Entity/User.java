@@ -1,16 +1,18 @@
 package Entity;
 
+import java.sql.Date;
+
 public class User {
     private long id;
     private String username;
     private String password;
     private String email;
-    private String registered;
+    private Date registered;
     private byte status;
     private String displayname;
     private byte role;
 
-    public User(long id, String username, String password, String email, String registered, byte status, String displayname, byte role) {
+    public User(long id, String username, String password, String email, Date registered, byte status, String displayname, byte role) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -53,11 +55,11 @@ public class User {
         this.email = email;
     }
 
-    public String getRegistered() {
+    public Date getRegistered() {
         return registered;
     }
 
-    public void setRegistered(String registered) {
+    public void setRegistered(Date registered) {
         this.registered = registered;
     }
 

@@ -1,14 +1,17 @@
 package Entity;
 
+import java.sql.Date;
+
 public class Comment {
     private long comment_id;
     private long post_id;
     private long user_id;
     private String comment_content;
-    private String comment_date;
+    private Date comment_date;
     private String comment_status;
 
-    public Comment(long comment_id, long post_id, long user_id, String comment_content, String comment_date, String comment_status) {
+
+    public Comment(long comment_id, long post_id, long user_id, String comment_content, Date comment_date, String comment_status) {
         this.comment_id = comment_id;
         this.post_id = post_id;
         this.user_id = user_id;
@@ -49,11 +52,11 @@ public class Comment {
         this.comment_content = comment_content;
     }
 
-    public String getComment_date() {
+    public Date getComment_date() {
         return comment_date;
     }
 
-    public void setComment_date(String comment_date) {
+    public void setComment_date(Date comment_date) {
         this.comment_date = comment_date;
     }
 

@@ -2,17 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c462937e-454d-47a5-b97d-61be141480ad" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/mysql_connector_java_8_0_17.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entity/Comment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entity/Landscape.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entity/Post.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entity/Rating.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entity/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Util/ConnectDB.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/Province.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prj321-diadanhvietnam.iml" beforeDir="false" afterPath="$PROJECT_DIR$/prj321-diadanhvietnam.iml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -70,7 +61,7 @@
       <option name="presentableId" value="Default" />
       <updated>1570529930644</updated>
       <workItem from="1570529933684" duration="64000" />
-      <workItem from="1570531020425" duration="3107000" />
+      <workItem from="1570531020425" duration="5255000" />
     </task>
     <servers />
   </component>

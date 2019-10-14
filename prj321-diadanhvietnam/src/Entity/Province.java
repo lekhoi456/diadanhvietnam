@@ -15,6 +15,17 @@ public class Province {
         this.thumbnail = thumbnail;
     }
 
+    @Override
+    public String toString() {
+        return "Province{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", content='" + content + '\'' +
+                ", guid='" + guid + '\'' +
+                ", thumbnail='" + thumbnail + '\'' +
+                '}';
+    }
+
     public long getId() {
         return id;
     }

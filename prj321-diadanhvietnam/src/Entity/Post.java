@@ -1,17 +1,19 @@
 package Entity;
 
+import java.sql.Date;
+
 public class Post {
     private long id;
     private String title;
     private String thumbnail;
     private long post_author;
     private String guid;
-    private String post_date;
+    private Date post_date;
     private byte status;
     private long landscape_id;
     private long province_id;
 
-    public Post(long id, String title, String thumbnail, long post_author, String guid, String post_date, byte status, long landscape_id, long province_id) {
+    public Post(long id, String title, String thumbnail, long post_author, String guid, Date post_date, byte status, long landscape_id, long province_id) {
         this.id = id;
         this.title = title;
         this.thumbnail = thumbnail;
@@ -63,11 +65,11 @@ public class Post {
         this.guid = guid;
     }
 
-    public String getPost_date() {
+    public Date getPost_date() {
         return post_date;
     }
 
-    public void setPost_date(String post_date) {
+    public void setPost_date(Date post_date) {
         this.post_date = post_date;
     }
 

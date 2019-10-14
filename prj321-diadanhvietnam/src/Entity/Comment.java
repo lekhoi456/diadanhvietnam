@@ -1,19 +1,35 @@
 package Entity;
 
+import java.sql.Date;
+
 public class Comment {
     private long comment_id;
     private long post_id;
     private long user_id;
     private String comment_content;
-    private String comment_date;
-    private String comment_status;
+    private Date comment_date;
+    private int comment_status;
 
-    public Comment(long comment_id, long post_id, long user_id, String comment_content, String comment_date, String comment_status) {
+    @Override
+    public String toString() {
+        return "Comment{" +
+                "comment_id=" + comment_id +
+                ", post_id=" + post_id +
+                ", user_id=" + user_id +
+                ", comment_content='" + comment_content + '\'' +
+                ", comment_date=" + comment_date +
+                ", comment_status='" + comment_status + '\'' +
+                '}';
+    }
+
+    public Comment(long comment_id, long post_id, long user_id, String comment_content, Date comment_Date, int comment_status) {
+
+
         this.comment_id = comment_id;
         this.post_id = post_id;
         this.user_id = user_id;
         this.comment_content = comment_content;
-        this.comment_date = comment_date;
+        this.comment_date = comment_Date;
         this.comment_status = comment_status;
     }
 
@@ -49,19 +65,20 @@ public class Comment {
         this.comment_content = comment_content;
     }
 
-    public String getComment_date() {
+    public Date getComment_date() {
         return comment_date;
     }
 
-    public void setComment_date(String comment_date) {
+    public void setComment_date(Date comment_date) {
+
         this.comment_date = comment_date;
     }
 
-    public String getComment_status() {
+    public int getComment_status() {
         return comment_status;
     }
 
-    public void setComment_status(String comment_status) {
+    public void setComment_status(int comment_status) {
         this.comment_status = comment_status;
     }
 }

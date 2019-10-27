@@ -1,13 +1,10 @@
-package org.apache.jsp;
+package org.apache.jsp.admin;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
-import java.util.ArrayList;
-import Model.ProvinceModel;
-import Entity.Province;
 
-public final class province_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class newjsp_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -47,36 +44,17 @@ public final class province_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("\n");
       out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
       out.write("<!DOCTYPE html>\n");
       out.write("<html>\n");
       out.write("    <head>\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
-      out.write("        <title>Province</title>\n");
+      out.write("        <title>JSP Page</title>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
-      out.write("        <h1>List Province</h1>\n");
-      out.write("        <ul>\n");
-      out.write("            ");
-
-                try {
-                    ProvinceModel provinceModel = new ProvinceModel();
-                    ArrayList<Province> provinceList = provinceModel.getListProvince();
-                    for (Province pl : provinceList) {
-                            out.println("<li>" + pl.getName() + "</li>");
-                        }
-                } catch (Exception e) {
-                    out.println("Error: " + e);
-                }       
-            
+      out.write("        ");
+      org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "hello.jsp", out, false);
       out.write("\n");
-      out.write("\n");
-      out.write("        </ul>\n");
-      out.write("\n");
+      out.write("        <h1>Hello World!</h1>\n");
       out.write("    </body>\n");
       out.write("</html>\n");
     } catch (Throwable t) {

@@ -1,118 +1,95 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package Model;
 
+import Entity.Landscape;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import Entity.Landscape;
-import Utils.ConnectDB;
-import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
  *
- * @author duong
+ * @author KhoiLeQuoc
  */
 public class LandscapeModel {
 
-    public ArrayList<Landscape> landscapeList = new ArrayList<>();
-    private static Connection conn;
-    private static Statement st;
-    private static PreparedStatement pst;
-    private static ResultSet rs;
+    public static int numberInPaging = 20;
+    ArrayList<Landscape> landscapeArrayList;
+    Connection conn;
+    ResultSet rs;
+    Statement st;
 
-    /**
-     *
-     * @param name
-     * @param description
-     * @param guid
-     * @param thumbnail
-     */
-    public void addLandscape(String name, String description, String guid, String thumbnail) {
-        try {
-            String insertquery = "INSERT INTO `landscape`(`name`, `description`, `thumbnail`, `guid`) VALUES (?,?,?,?)";
-            conn = ConnectDB.getConnection();
-            pst = conn.prepareStatement(insertquery, Statement.RETURN_GENERATED_KEYS);
-            pst.setString(1, name);
-            pst.setString(2, description);
-            pst.setString(3, thumbnail);
-            pst.setString(4, guid);
-            pst.executeUpdate();
-            Landscape a = new Landscape(landscapeList.size() + 1, name, description, guid, thumbnail);
-            landscapeList.add(a);
-        } catch (SQLException ex) {
-            Logger.getLogger(LandscapeModel.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
+    public LandscapeModel(Connection conn) {
+        this.conn = conn;
     }
 
-    /**
-     *
-     */
-    public void loadLandscape() {
+    public ArrayList<Landscape> getPaging(int page, String search, String sortColumn) throws SQLException {
         try {
-            conn = ConnectDB.getConnection();
-            st = conn.createStatement();
-            String Selectquery = "SELECT * FROM `lanscape`";
-            rs = st.executeQuery(Selectquery);
-            landscapeList = new ArrayList<>();
-            if (rs.isBeforeFirst()) {
-                landscapeList.clear();
-                while (rs.next()) {
-                    long id = rs.getInt("id");
-                    String name = rs.getString("name");
-                    String description = rs.getString("description");
-                    String thumbnail = rs.getString("thumbnail");
-                    String guid = rs.getString("guid");
-                    Landscape a = new Landscape(id, name, description, guid, thumbnail);
-                    landscapeList.add(a);
+            String sqlStr = "";
+            sqlStr += "SELECT * FROM landscape";
+            if (search != "") {
+
+            }
+            if (sortColumn != "") {
+
+            }
+
+            int sumOfLandscape = getNumberOfLandscape(page, search, sortColumn);
+            int sumOfPage = (int) Math.ceil(sumOfLandscape / numberInPaging);
+            int index = (page - 1) * numberInPaging;
+
+            sqlStr += " LIMIT " + index + ", " + numberInPaging;
+            this.st = this.conn.createStatement();
+            this.rs = this.st.executeQuery(sqlStr);
+            landscapeArrayList = new ArrayList<Landscape>();
+            while (rs.next()) {
+                long id = rs.getLong("id");
+                String name = rs.getString("name");
+                String description = rs.getString("description");
+                String guid = rs.getString("guid");
+                String thumbnail = rs.getString("thumbnail");
+
+                landscapeArrayList.add(new Landscape(id, name, description, guid, thumbnail));
+            }
+        } catch (SQLException se) {
+            throw se;
+        }
+        return this.landscapeArrayList;
+    }
+
+    public int getNumberOfLandscape(int page, String search, String sortColumn) throws SQLException {
+        String sqlStr = "";
+        sqlStr += "SELECT count(*) as numberOfLandscape FROM landscape";
+
+        this.st = this.conn.createStatement();
+        this.rs = this.st.executeQuery(sqlStr);
+        rs.next();
+        return rs.getInt("numberOfLandscape");
+    }
+
+    public String getPagingString(int currentPage, String search, String sortColumn) throws SQLException {
+        String strPaging = "<ul class='pagination'>";
+        try {
+            int sumOfLandscape = getNumberOfLandscape(currentPage, search, sortColumn);
+            int sumOfPage = (int) Math.ceil(sumOfLandscape / numberInPaging);
+            for (int inPage = 1; inPage <= sumOfPage; inPage++) {
+                if (inPage == currentPage) {
+                    strPaging += "<li class='active'><a href='?page=" + inPage + "'>" + inPage + "</a></li>";
+                } else {
+                    strPaging += "<li><a href='?page=" + inPage + "'>" + inPage + "</a></li>";
                 }
             }
+            strPaging += "</ul>";
         } catch (SQLException ex) {
-            Logger.getLogger(LandscapeModel.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Entity.Landscape.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
-
-    /**
-     *
-     * @param id
-     * @param name
-     * @param description
-     * @param guid
-     * @param thumbnail
-     */
-    public void updateLandscape(long id, String name, String description, String guid, String thumbnail) {
-        try {
-            String Updatequery = "UPDATE `landscape` SET `name`=?,`description`=?,`thumbnail`=?,`guid`=? WHERE id = ?";
-
-            pst = conn.prepareStatement(Updatequery);
-            pst.setString(1, name);
-            pst.setString(2, description);
-            pst.setString(3, guid);
-            pst.setLong(4, id);
-            pst.executeUpdate();
-            loadLandscape();
-        } catch (SQLException ex) {
-            Logger.getLogger(LandscapeModel.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }
-
-    /**
-     * *
-     *
-     * @param id
-     */
-    public void deleteLandscape(long id) {
-        try {
-            String Deletequery = "DELETE FROM `landscape` WHERE id = " + id;
-            conn.prepareStatement(Deletequery);
-            pst.executeUpdate();
-            loadLandscape();
-        } catch (SQLException ex) {
-            Logger.getLogger(LandscapeModel.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        return strPaging;
     }
 }

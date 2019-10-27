@@ -1,110 +1,95 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package Model;
 
 import Entity.Province;
-import Utils.ConnectDB;
-
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
+/**
+ *
+ * @author KhoiLeQuoc
+ */
 public class ProvinceModel {
 
-    private ArrayList<Province> listProvince = new ArrayList<>();
-    private static Connection conn;
-    private static Statement st;
-    private static PreparedStatement pst;
-    private static ResultSet rs;
-    private static String sqlStr;
+    public static int numberInPaging = 100;
+    ArrayList<Province> provinceArrayList;
+    Connection conn;
+    ResultSet rs;
+    Statement st;
 
-    public ArrayList<Province> getListProvince() {
-        return listProvince;
+    public ProvinceModel(Connection conn) {
+        this.conn = conn;
     }
 
-    public ProvinceModel() {
+    public ArrayList<Province> getPaging(int page, String search, String sortColumn) throws SQLException {
         try {
-            conn = ConnectDB.getConnection();
-            st = conn.createStatement();
-            
-            pst = null;
-            rs = null;
-            sqlStr = "";
-            listProvince = new ArrayList<>();
-            loadProvince();
-        } catch (SQLException e) {
-            e.printStackTrace();
+            String sqlStr = "";
+            sqlStr += "SELECT * FROM province";
+            if (search != "") {
+
+            }
+            if (sortColumn != "") {
+
+            }
+
+            int sumOfLandscape = getNumberOfProvince(page, search, sortColumn);
+            int sumOfPage = (int) Math.ceil(sumOfLandscape / numberInPaging);
+            int index = (page - 1) * numberInPaging;
+
+            sqlStr += " LIMIT " + index + ", " + numberInPaging;
+            this.st = this.conn.createStatement();
+            this.rs = this.st.executeQuery(sqlStr);
+            provinceArrayList = new ArrayList<Province>();
+            while (rs.next()) {
+                long id = rs.getLong("id");
+                String name = rs.getString("name");
+                String content = rs.getString("content");
+                String guid = rs.getString("guid");
+                String thumbnail = rs.getString("thumbnail");
+
+                provinceArrayList.add(new Province(id, name, content, guid, thumbnail));
+            }
+        } catch (SQLException se) {
+            throw se;
         }
-
+        return this.provinceArrayList;
     }
 
-    void loadProvince() throws SQLException {
+    public int getNumberOfProvince(int page, String search, String sortColumn) throws SQLException {
+        String sqlStr = "";
+        sqlStr += "SELECT count(*) as numberOfProvince FROM province";
+
+        this.st = this.conn.createStatement();
+        this.rs = this.st.executeQuery(sqlStr);
+        rs.next();
+        return rs.getInt("numberOfProvince");
+    }
+
+    public String getPagingString(int currentPage, String search, String sortColumn) throws SQLException {
+        String strPaging = "<ul class='pagination'>";
         try {
-            sqlStr = "SELECT * FROM `province`";
-            rs = st.executeQuery(sqlStr);
-            if (rs.isBeforeFirst()) {
-                listProvince.clear();
-                while (rs.next()) {
-                    listProvince.add(new Province(rs.getLong("id"),
-                            rs.getString("name"),
-                            rs.getString("content"),
-                            rs.getString("guid"),
-                            rs.getString("thumbnail")));
+            int sumOfLandscape = getNumberOfProvince(currentPage, search, sortColumn);
+            int sumOfPage = (int) Math.ceil(sumOfLandscape / numberInPaging);
+            for (int inPage = 1; inPage <= sumOfPage; inPage++) {
+                if (inPage == currentPage) {
+                    strPaging += "<li class='active'><a href='?page=" + inPage + "'>" + inPage + "</a></li>";
+                } else {
+                    strPaging += "<li><a href='?page=" + inPage + "'>" + inPage + "</a></li>";
                 }
             }
-        } catch (SQLException e) {
-            throw e;
-        }
-    }
-
-    /*
-    public int insert(long id, String name, String content, String guid, String thumbnail)  {
-        try {
-            String sql = "INSERT INTO [province\n"
-                    + "           ([id]\n"
-                    + "           ,[name]\n"
-                    + "           ,[content]\n"
-                    + "           ,[guid]\n"
-                    + "           ,[thumbnail]\n"
-                    + "     VALUES(?,?,?,?,?)";
-
-            ps = con.prepareStatement(sql);
-            ps.setLong(1, id);
-            ps.setString(2, name);
-            ps.setString(3,content);
-            ps.setString(4, guid);
-            ps.setString(5, thumbnail);
-            ps.executeUpdate();
-            con.close();
-            list.add(new Province(id, name, content, guid, thumbnail));
-            return nextId++;
+            strPaging += "</ul>";
         } catch (SQLException ex) {
-            Logger.getLogger(ProvinceModel.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Entity.Province.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return -1;
-    }
-    public void delete(int ID) throws SQLException {
-        String sql = "DELETE FROM `province` WHERE ID=?";
-        ps = con.prepareStatement(sql);
-        ps.setInt(1, ID);
-        ps.executeUpdate();
-        list.clear();
-        String sql2 = "SELECT * FROM province";
-        stmt = con.createStatement();
-        rs = stmt.executeQuery(sql2);
-        while (rs.next()) {
-            long id = rs.getLong(1);
-            String name = rs.getString(2);
-            String content = rs.getString(3);
-            String guid = rs.getString(4);
-            String thumbnail = rs.getString(5);
-            list.add(new Province(id, name, content, guid, thumbnail));
-        }
-    }
-
-     */
-    public static void main(String[] args) {
-        ProvinceModel pr = new ProvinceModel();
-        ArrayList<Province> l = pr.getListProvince();
-        for (int i = 0; i < l.size(); i++) {
-            System.out.println(l.get(i).toString());
-        }
+        return strPaging;
     }
 }

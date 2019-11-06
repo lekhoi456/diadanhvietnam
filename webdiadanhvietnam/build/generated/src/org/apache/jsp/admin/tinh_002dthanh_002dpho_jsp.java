@@ -89,14 +89,14 @@ public final class tinh_002dthanh_002dpho_jsp extends org.apache.jasper.runtime.
       out.write("                    <div class=\"content-header-left col-md-12 col-12 mb-2\">\n");
       out.write("                        <div class=\"row breadcrumbs-top\">\n");
       out.write("                            <div class=\"col-12\">\n");
-      out.write("                                <h2 class=\"content-header-title float-left mb-0\">Vùng</h2>\n");
+      out.write("                                <h2 class=\"content-header-title float-left mb-0\">Địa hình</h2>\n");
       out.write("                                <div class=\"breadcrumb-wrapper col-12\">\n");
       out.write("                                    <ol class=\"breadcrumb\">\n");
       out.write("                                        <li class=\"breadcrumb-item\"><a href=\"#\">Bảng điều khiển</a>\n");
       out.write("                                        </li>\n");
       out.write("                                        <li class=\"breadcrumb-item\"><a href=\"#\">Chuyên mục</a>\n");
       out.write("                                        </li>\n");
-      out.write("                                        <li class=\"breadcrumb-item active\">Vùng\n");
+      out.write("                                        <li class=\"breadcrumb-item\">Địa hình\n");
       out.write("                                        </li>\n");
       out.write("                                    </ol>\n");
       out.write("                                </div>\n");

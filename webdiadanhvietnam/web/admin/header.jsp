@@ -82,16 +82,16 @@
             </li>
             <li class=" nav-item"><a href="#"><i class="feather icon-list"></i><span class="menu-title">Chuyên mục</span></a>
                 <ul class="menu-content">
-                    <li><a class="dd-menu" href="../admin/dia-hinh.jsp"><i class="feather icon-map"></i><span class="menu-item">Địa hình</span></a>
+                    <li><a class="dd-menu" href="../admin/dia-hinh"><i class="feather icon-map"></i><span class="menu-item">Địa hình</span></a>
                     </li>
-                    <li><a class="dd-menu" href="../admin/tinh-thanh-pho.jsp"><i class="feather icon-map-pin"></i><span class="menu-item">Tỉnh/Thành phố</span></a>
+                    <li><a class="dd-menu" href="../admin/tinh-thanh-pho"><i class="feather icon-map-pin"></i><span class="menu-item">Tỉnh/Thành phố</span></a>
                     </li>
                 </ul>
             </li>
             <li class=" navigation-header"><span>Cài đặt</span>
             </li>
 
-            <li class=" nav-item"><a href="#"><i class="feather icon-layout"></i><span class="menu-title" data-i18n="Content">Cài đặt chung</span></a>
+            <li class=" nav-item"><a href="../admin/cai-dat-chung"><i class="feather icon-layout"></i><span class="menu-title" data-i18n="Content">Cài đặt chung</span></a>
                 <ul class="menu-content">
                     <li><a href="../admin/setting-number.jsp"><i class="feather icon-circle"></i><span class="menu-item">Tổng quan</span></a>
                     </li>

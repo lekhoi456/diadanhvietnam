@@ -3,7 +3,10 @@
     Created on : Nov 7, 2019, 2:45:28 AM
     Author     : KhoiLeQuoc
 --%>
-
+<%if (session.getAttribute("user") != null) {
+        response.sendRedirect("../admin");
+    }
+%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

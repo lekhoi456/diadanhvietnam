@@ -2,6 +2,42 @@
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     
     <servlet>
+        <servlet-name>admin</servlet-name>
+        <jsp-file>/admin/index.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>admin</servlet-name>
+        <url-pattern>/admin/</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>admin_dashboard</servlet-name>
+        <jsp-file>/admin/bang-dieu-khien.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>admin_dashboard</servlet-name>
+        <url-pattern>/admin/bang-dieu-khien</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>admin_dang-xuat</servlet-name>
+        <jsp-file>/admin/dang-xuat.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>admin_dang-xuat</servlet-name>
+        <url-pattern>/admin/dang-xuat</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>admin_dang_nhap</servlet-name>
+        <jsp-file>/admin/dang-nhap.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>admin_dang_nhap</servlet-name>
+        <url-pattern>/admin/dang-nhap</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
         <servlet-name>admin_dia_hinh</servlet-name>
         <jsp-file>/admin/dia-hinh.jsp</jsp-file>
     </servlet>

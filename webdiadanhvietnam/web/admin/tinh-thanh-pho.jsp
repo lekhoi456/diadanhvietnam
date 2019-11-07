@@ -98,7 +98,7 @@
                                         <td></td>
                                         <td><%=numberOfProvince%>
                                         </td>
-                                        <td class="product-img"><img src="../imgs/landscape/<%=ls.getThumbnail()%>">
+                                        <td class="product-img"><img src="../imgs/province/<%=ls.getThumbnail()%>">
                                         </td>
                                         <td class="product-name"><%=ls.getName()%></td>
                                         <td class="product-name"><%=ls.getContent()%></td>

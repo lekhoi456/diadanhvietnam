@@ -9,5 +9,5 @@
     if (session.getAttribute("user") == null) {%>
 <jsp:include page = "../admin/dang-nhap.jsp"/>
 <%} else {%>
-<jsp:include page = "../admin/bang-dieu-khien.jsp"/>
+<jsp:include page = "../admin/dia-hinh.jsp"/>
 <%}%>

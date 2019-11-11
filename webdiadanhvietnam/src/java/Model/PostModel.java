@@ -69,7 +69,7 @@ public class PostModel {
             st = conn.createStatement();
             String Selectquery = "SELECT * FROM `post`";
             rs = st.executeQuery(Selectquery);
-           postList = new ArrayList<>();
+            postList = new ArrayList<>();
             if (rs.isBeforeFirst()) {
                 postList.clear();
                 while (rs.next()) {

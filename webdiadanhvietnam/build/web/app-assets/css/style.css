@@ -2202,7 +2202,7 @@ blockquote i:before {
 }
 
 .rs-category.style2 .single-category .category-part .category-title h3 a {
-  color: #ffffff;
+  color: #ffffff; 
 }
 
 .rs-category.style2 .single-category .category-part .category-title h3 a:hover {
@@ -4764,7 +4764,7 @@ blockquote i:before {
 	24. Footer Section CSS
 --------------------------*/
 .rs-footer {
-  background: url(../../imgs/footer-bg.jpg);
+  background: url(../../imgs/banner/footer-bg.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
@@ -4789,11 +4789,11 @@ blockquote i:before {
 }
 
 .rs-footer .footer-menu li a {
-  color: #333333;
+  color: #f1f2f6;
 }
 
 .rs-footer .footer-menu li a:hover {
-  color: #555555;
+  color: #fff;
 }
 
 .rs-footer .footer-menu li:last-child {
@@ -4835,6 +4835,7 @@ blockquote i:before {
 }
 
 .rs-footer .copyright-text p {
+  color: #f1f2f6;
   margin: 0;
 }
 

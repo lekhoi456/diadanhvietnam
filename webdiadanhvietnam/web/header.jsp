@@ -16,7 +16,7 @@
                     <div class="col-lg-3 hidden-md">
                         <div class="left-menu">
                             <div class="logo-area text-center">
-                                <a href="index.html"><img src="imgs/logo.png" alt="logo"></a>
+                                <a href="/"><img src="imgs/logo.png" alt="logo"></a>
                             </div>
                         </div>
                     </div>
@@ -24,39 +24,19 @@
                         <div class="center-menu">
                             <div class="main-menu">
                                 <div class="mobile-menu">
-                                    <a class="mobile-logo" href="index.html"><img src="imgs/logo.png"
+                                    <a class="mobile-logo" href="/"><img src="imgs/logo.png"
                                                                                   alt="Mobile Logo"></a>
-                                    <a class="rs-menu-toggle"><i class="flaticon-menu"></i>Menu</a>
+                                    <a class="rs-menu-toggle"><i class="flaticon-menu"></i></a>
                                 </div>
                                 <nav class="rs-menu">
                                     <ul class="nav-menu text-center">
-                                        <!-- Home -->
-                                        <li class="current-menu-item current_page_item menu-item"> <a
-                                                href="#" class="home">Trang chủ</a>
-                                        </li>
-                                        <!-- End Home -->
-
-                                        <!--About Start-->
-                                        <li class="menu-item"><a href="#">Giới thiệu</a>
-                                        </li>
-                                        <!--About End-->
-
-                                        <!--Categories Menu Start -->
-                                        <li class="menu-item"> <a href="#">Địa hình</a>
-                                           
-                                        </li>
-                                        <!--Categories Menu End -->
-
-                                        <!-- Mega Menu Start -->
-                                        <li class="menu-item"> <a
-                                                href="#">Tỉnh/Thành phố</a>
-                                        </li>
-                                        <!--Mega Menu End -->
-
-                                        <!--Contact Menu Start-->
-                                        <li class="last-item"><a href="#">Liên hệ</a></li>
-                                        <!--Contact Menu End-->
-                                    </ul> <!-- //.nav-menu -->
+                                        <li class="menu-item"> <a href="./" class="home">Trang chủ</a></li>
+                                        <li class="menu-item"><a href="./gioi-thieu">Giới thiệu</a></li>
+                                        <li class="menu-item"> <a href="./dia-hinh">Địa hình</a></li>
+                                        <li class="menu-item"> <a href="./tinh-thanh-pho">Tỉnh/Thành phố</a></li>
+                                        <li class="menu-item"> <a href="https://www.saigontourist.net/tour-trong-nuoc" target="_blank">Tour Du Lịch</a></li>
+                                        <li class="menu-item"><a href="./lien-he">Liên hệ</a></li>
+                                    </ul>
                                 </nav>
                             </div> <!-- //.main-menu -->
                         </div>
@@ -64,12 +44,7 @@
 
                     <div class="col-lg-3 hidden-md">
                         <div class="menu-right">
-                            <ul class="topbar-social text-left">
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-pinterest-p"></i></a></li>
-                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                            </ul>
+                            
                             <div class="appointment-cart text-right">
                                 <ul class="cart">
                                     <li><a class="hidden-xs rs-search" data-target=".search-modal"
@@ -82,8 +57,6 @@
             </div>
         </div>
         <!-- Menu End -->
-
-        
     </header>
     <!--Header End-->
 </div>

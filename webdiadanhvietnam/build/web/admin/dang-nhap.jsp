@@ -98,7 +98,7 @@
                                                             </div>
                                                             <div class="text-right"><a href="auth-forgot-password.html" class="card-link">Quên mật khẩu?</a></div>
                                                         </div>
-                                                        <a href="#" class="btn btn-outline-primary float-left btn-inline">Đăng ký</a>
+                                                        <a href="./dang-ky" class="btn btn-outline-primary float-left btn-inline">Đăng ký</a>
                                                         <button type="submit" class="btn btn-primary float-right btn-inline">Đăng nhập</button>
                                                     </form>
                                                 </div>

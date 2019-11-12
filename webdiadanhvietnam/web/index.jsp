@@ -3,6 +3,9 @@
     Created on : Nov 11, 2019, 9:44:32 AM
     Author     : KhoiLeQuoc
 --%>
+<%@page import="Entity.User"%>
+<%@page import="Model.UserModel"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="Model.PostModel"%>
 <%@page import="Model.ProvinceModel"%>
 <%@page import="Model.LandscapeModel"%>
@@ -15,14 +18,17 @@
 <%
     PostModel postModel = new PostModel();
     ArrayList<Post> postArrayList = postModel.getList();
-    
+
     LandscapeModel landscapeModel = new LandscapeModel();
     ArrayList<Landscape> landscapeArrayList = landscapeModel.getList();
-    
+
     ProvinceModel provinceModel = new ProvinceModel();
     ArrayList<Province> provinceArrayList = provinceModel.getList();
-   
-    
+
+    UserModel userModel = new UserModel();
+    ArrayList<User> userArrayList = userModel.getList();
+
+
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -75,18 +81,17 @@
                      data-mobile-device-dots="false" data-ipad-device="2" data-ipad-device-nav="true"
                      data-ipad-device-dots="false" data-ipad-device2="1" data-ipad-device-nav2="true"
                      data-ipad-device-dots2="false" data-md-device="3" data-md-device-nav="true" data-md-device-dots="false">
-                            <%
-                                for (Landscape ls : landscapeArrayList) {
-                                    out.println("<div class='single-category hover-grow'>");
-                                    out.println("<div class='category-part'>");
-                                    out.println("<a href='/dia-hinh?dh=" + ls.getGuid() +"'><img src='./imgs/landscape/" + ls.getThumbnail() + "' alt='" + ls.getName() + "'></a>");
-                                    out.println("<div class='category-title'>");
-                                    out.println("<h3><a href='/dia-hinh?dh=" + ls.getGuid() + "'>" + ls.getName() + "</a></h3>");
-                                    out.println("</div>");
-                                    out.println("</div>");
-                                    out.println("</div>");
-                                }
-                            %>
+                    <%                                for (Landscape ls : landscapeArrayList) {
+                            out.println("<div class='single-category hover-grow'>");
+                            out.println("<div class='category-part'>");
+                            out.println("<a href='/dia-hinh?dh=" + ls.getGuid() + "'><img src='./imgs/landscape/" + ls.getThumbnail() + "' alt='" + ls.getName() + "'></a>");
+                            out.println("<div class='category-title'>");
+                            out.println("<h3><a href='/dia-hinh?dh=" + ls.getGuid() + "'>" + ls.getName() + "</a></h3>");
+                            out.println("</div>");
+                            out.println("</div>");
+                            out.println("</div>");
+                        }
+                    %>
                 </div>
             </div>
         </div>
@@ -99,58 +104,42 @@
                     <h2 class="title uppercase">Bài viết mới</h2>
                 </div>
                 <div class="row">
-                    
+
                     <%
                         int numPostGrid = 0;
                         for (Post ls : postArrayList) {
-                            ++numPostGrid;
-                            out.println("<div class='col-lg-4 col-md-6 col-sm-12 blogBox moreBox'>");
-                                out.println("<div class='article-grid mb-42'>");
+                            if (ls.getStatus() == 1) {
+                                ++numPostGrid;
+                                if (numPostGrid < 7) {
+                                    out.println("<div class='col-lg-4 col-md-6 col-sm-12 blogBox moreBox'>");
+                                    out.println("<div class='article-grid mb-42'>");
                                     out.println("<div class='hover-grow'>");
-                                        out.println("<a href='" + ls.getGuid() + "'><img src='imgs/post-image/" + ls.getThumbnail() + "' alt='" + ls.getTitle() + "'></a>");
+                                    out.println("<a href='" + ls.getGuid() + "'><img src='imgs/post-image/" + ls.getThumbnail() + "' alt='" + ls.getTitle() + "'></a>");
                                     out.println("</div>");
                                     out.println("<div class='article-content'>");
-                                        out.println("<div class='categories'>");
-                                            out.println("<ul>");
-                                                out.println("<li><a href='./" + ls.getGuid()  + "'>" + "đây là tên tỉnh/thành phố" + "</a></li>");
-                                                out.println("<li><a href='./" + ls.getGuid()  + "'>" + "đây là tên địa hình" + "</a></li>");
-                                            out.println("</ul>");
-                                        out.println("</div>");
+                                    out.println("<div class='categories'>");
+                                    out.println("<ul>");
+                                    out.println("<li><a href='./dia-hinh?dh=" + provinceModel.getGuidById(ls.getLandscape_id()) + "'>" + provinceModel.getNameById(ls.getLandscape_id()) + "</a></li>");
+                                    out.println("<li><a href='./tinh-thanh-pho?ttp=" + landscapeModel.getGuidById(ls.getProvince_id()) + "'>" + landscapeModel.getNameById(ls.getProvince_id()) + "</a></li>");
+                                    out.println("</ul>");
                                     out.println("</div>");
-                                out.println("</div>");
-                            out.println("</div>");
-                    }%>
-                    
-                    
-                    <!--<div class="col-lg-4 col-md-6 col-sm-12 blogBox moreBox">-->
-                        <!--<div class="article-grid mb-42">-->
-                            <!--<div class="hover-grow">-->
-<!--                                <a href="standard-post.html"><img src="imgs/recent-articles/1.jpg"
-                                                                  alt="Recent Articles"></a>-->
-                            <!--</div>-->
-                            <!--<div class="article-content">-->
-                                <!--<div class="categories">-->
-<!--                                    <ul>
-                                        <li><a href="categories.html">Business</a></li>
-                                        <li><a href="categories.html">Lifestyle</a></li>
-                                    </ul>-->
-                                <!--</div>-->
-                                <div class="post-date-author">
-                                    <ul>
-                                        <li><i class="fa fa-calendar"></i>June 28, 2019</li>
-                                        <li><a href="#"><i class="fa fa-user-o"></i>Yammi Guan</a></li>
-                                    </ul>
-                                </div>
-                                <h3 class="article-title"><a href="standard-post.html">Man in Red Plaid Shirt Talking Phone
-                                        on Terrace</a></h3>
-                                <div class="desc">
-                                    On the other hand, we denounce with righteous indig nation the foult anuals dislike men
-                                    who are so be guiled and demoralized
-                                </div>
-                            <!--</div>-->
-                        <!--</div>-->
-<!--                    </div> Item 1 end -->
-                    
+                                    out.println("<div class='post-date-author'>");
+                                    out.println("<ul>");
+                                    SimpleDateFormat dFormat = new SimpleDateFormat("dd/MM/yyyy");
+                                    out.println("<li><i class='fa fa-calendar'></i>" + dFormat.format(ls.getPost_date()) + "</li>");
+                                    out.println("<li><a href='./user?user=" + userModel.getUsernameById(ls.getPost_author()) + "'><i class='fa fa-user-o'></i>" + userModel.getDisplaynameById(ls.getPost_author()) + "</a></li>");
+                                    out.println("</ul>");
+                                    out.println("</div>");
+                                    out.println("<h3 class='article-title'><a href='" + ls.getGuid() + "'>" + ls.getTitle() + "</a></h3>");
+                                    out.println("<div class='desc'> " + ls.getDescription() + "</div>");
+                                    out.println("</div>");
+                                    out.println("</div>");
+                                    out.println("</div>");
+                                } else if (numPostGrid == 7) {
+
+                                }
+                            }
+                        }%>
                 </div>
             </div>
         </div><!-- .rs-articles -->
@@ -273,13 +262,13 @@
                                         </div>
                                     </div>
                                 </div>
-                                
+
                             </div>
                             <div class="add-banner mb-40">
                                 <div class="add-img hover-shine text-center">
                                     <figure>
                                         <a href="#"><img src="imgs/banner/add-banner.jpg"
-                                                                          alt="Add Banner Image"></a>
+                                                         alt="Add Banner Image"></a>
                                     </figure>
                                 </div>
                             </div>

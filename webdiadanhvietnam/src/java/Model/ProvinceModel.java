@@ -62,10 +62,28 @@ public class ProvinceModel {
         return this.provinceArrayList;
     }
     
-    public String getProvinceName(long provinceId) {
+    public String getNameById(long provinceId) {
         for (Province ls: provinceArrayList) {
             if (provinceId == ls.getId()) {
                 return ls.getName();
+            }
+        }
+        return null;
+    }
+   
+    public String getGuidById(long provinceId) {
+        for (Province ls: provinceArrayList) {
+            if (provinceId == ls.getId()) {
+                return ls.getGuid();
+            }
+        }
+        return null;
+    }
+    
+    public String getThumbnailById(long provinceId) {
+        for (Province ls: provinceArrayList) {
+            if (provinceId == ls.getId()) {
+                return ls.getThumbnail();
             }
         }
         return null;

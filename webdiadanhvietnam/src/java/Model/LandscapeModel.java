@@ -60,4 +60,32 @@ public class LandscapeModel {
     public ArrayList<Landscape> getList() {
         return this.landscapeArrayList;
     }
+    
+    public String getNameById(long landscapeId) {
+        for (Landscape ls: landscapeArrayList) {
+            if (landscapeId == ls.getId()) {
+                return ls.getName();
+            }
+        }
+        return null;
+    }
+    
+    
+    public String getGuidById(long landscapeId) {
+        for (Landscape ls: landscapeArrayList) {
+            if (landscapeId == ls.getId()) {
+                return ls.getGuid();
+            }
+        }
+        return null;
+    }
+    
+    public String getThumbnailById(long landscapeId) {
+        for (Landscape ls: landscapeArrayList) {
+            if (landscapeId == ls.getId()) {
+                return ls.getThumbnail();
+            }
+        }
+        return null;
+    }
 }

@@ -20,7 +20,7 @@ public class ConnectDB {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection(dbURL, userName, password);
-            System.out.println("Connected");
+//            System.out.println("Connected");
         } catch (ClassNotFoundException | SQLException e) {
             System.err.println("Connect to DB Failure!");
             e.printStackTrace();

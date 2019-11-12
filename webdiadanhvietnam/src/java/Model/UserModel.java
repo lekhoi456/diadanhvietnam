@@ -17,13 +17,14 @@ import java.util.logging.Logger;
  * @author duong
  */
 public class UserModel {
+
     public ArrayList<User> userArrayList = new ArrayList<>();
     private static Connection conn;
     private static Statement st;
     private static PreparedStatement pst;
     private static ResultSet rs;
 
-    public UserModel(){
+    public UserModel() {
         try {
             conn = ConnectDB.getConnection();
             loadUser();
@@ -35,7 +36,7 @@ public class UserModel {
     /**
      *
      */
-    public void loadUser() throws SQLException {
+    private void loadUser() throws SQLException {
         try {
             conn = ConnectDB.getConnection();
             st = conn.createStatement();
@@ -61,6 +62,54 @@ public class UserModel {
         }
     }
 
+    public ArrayList<User> getList() {
+        return this.userArrayList;
+    }
+
+    public String getUsernameById(long userId) {
+        for (User ls : userArrayList) {
+            if (userId == ls.getId()) {
+                return ls.getUsername();
+            }
+        }
+        return null;
+    }
+
+    public String getDisplaynameById(long userId) {
+        for (User ls : userArrayList) {
+            if (userId == ls.getId()) {
+                return ls.getDisplayname();
+            }
+        }
+        return null;
+    }
+
+    public String getEmailById(long userId) {
+        for (User ls : userArrayList) {
+            if (userId == ls.getId()) {
+                return ls.getEmail();
+            }
+        }
+        return null;
+    }
+
+    public byte getStatusById(long userId) {
+        for (User ls : userArrayList) {
+            if (userId == ls.getId()) {
+                return ls.getStatus();
+            }
+        }
+        return 0;
+    }
+       
+    public byte getRoleById(long userId) {
+        for (User ls : userArrayList) {
+            if (userId == ls.getId()) {
+                return ls.getRole();
+            }
+        }
+        return 0;
+    }
 //    /**
 //    * 
 //    * @param username

@@ -42,8 +42,10 @@ public class LandscapeModel {
             }
 
             int sumOfLandscape = getNumberOfLandscape(page, search, sortColumn);
-            int sumOfPage = (int) Math.ceil(sumOfLandscape / numberInPaging);
-            int index = (page - 1) * numberInPaging;
+            int sumOfPage = (int) Math.ceil((double) sumOfLandscape / numberInPaging);
+            int index =
+
+                    (page - 1) * numberInPaging;
 
             sqlStr += " LIMIT " + index + ", " + numberInPaging;
             this.st = this.conn.createStatement();

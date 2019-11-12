@@ -42,7 +42,7 @@ public class ProvinceModel {
             }
 
             int sumOfLandscape = getNumberOfProvince(page, search, sortColumn);
-            int sumOfPage = (int) Math.ceil(sumOfLandscape / numberInPaging);
+            int sumOfPage = (int) Math.ceil((double) sumOfLandscape / numberInPaging);
             int index = (page - 1) * numberInPaging;
 
             sqlStr += " LIMIT " + index + ", " + numberInPaging;

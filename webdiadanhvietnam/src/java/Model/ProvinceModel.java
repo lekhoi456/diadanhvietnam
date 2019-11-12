@@ -6,7 +6,9 @@
 package Model;
 
 import Entity.Province;
+import Utils.ConnectDB;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -20,32 +22,25 @@ import java.util.logging.Logger;
  */
 public class ProvinceModel {
 
-    public static int numberInPaging = 100;
     ArrayList<Province> provinceArrayList;
-    Connection conn;
-    ResultSet rs;
-    Statement st;
+    private static Connection conn;
+    private static Statement st;
+    private static PreparedStatement pst;
+    private static ResultSet rs;
 
-    public ProvinceModel(Connection conn) {
-        this.conn = conn;
+    public ProvinceModel() {
+        try {
+            conn = ConnectDB.getConnection();
+            loadProvince();
+        } catch (SQLException ex) {
+            Logger.getLogger(ProvinceModel.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
-    public ArrayList<Province> getPaging(int page, String search, String sortColumn) throws SQLException {
+    private void loadProvince() throws SQLException {
         try {
             String sqlStr = "";
             sqlStr += "SELECT * FROM province";
-            if (search != "") {
-
-            }
-            if (sortColumn != "") {
-
-            }
-
-            int sumOfLandscape = getNumberOfProvince(page, search, sortColumn);
-            int sumOfPage = (int) Math.ceil((double) sumOfLandscape / numberInPaging);
-            int index = (page - 1) * numberInPaging;
-
-            sqlStr += " LIMIT " + index + ", " + numberInPaging;
             this.st = this.conn.createStatement();
             this.rs = this.st.executeQuery(sqlStr);
             provinceArrayList = new ArrayList<Province>();
@@ -55,41 +50,24 @@ public class ProvinceModel {
                 String content = rs.getString("content");
                 String guid = rs.getString("guid");
                 String thumbnail = rs.getString("thumbnail");
-
                 provinceArrayList.add(new Province(id, name, content, guid, thumbnail));
             }
         } catch (SQLException se) {
             throw se;
         }
+        
+    }
+    
+    public ArrayList<Province> getList() {
         return this.provinceArrayList;
     }
-
-    public int getNumberOfProvince(int page, String search, String sortColumn) throws SQLException {
-        String sqlStr = "";
-        sqlStr += "SELECT count(*) as numberOfProvince FROM province";
-
-        this.st = this.conn.createStatement();
-        this.rs = this.st.executeQuery(sqlStr);
-        rs.next();
-        return rs.getInt("numberOfProvince");
-    }
-
-    public String getPagingString(int currentPage, String search, String sortColumn) throws SQLException {
-        String strPaging = "<ul class='pagination'>";
-        try {
-            int sumOfLandscape = getNumberOfProvince(currentPage, search, sortColumn);
-            int sumOfPage = (int) Math.ceil(sumOfLandscape / numberInPaging);
-            for (int inPage = 1; inPage <= sumOfPage; inPage++) {
-                if (inPage == currentPage) {
-                    strPaging += "<li class='active'><a href='?page=" + inPage + "'>" + inPage + "</a></li>";
-                } else {
-                    strPaging += "<li><a href='?page=" + inPage + "'>" + inPage + "</a></li>";
-                }
+    
+    public String getProvinceName(long provinceId) {
+        for (Province ls: provinceArrayList) {
+            if (provinceId == ls.getId()) {
+                return ls.getName();
             }
-            strPaging += "</ul>";
-        } catch (SQLException ex) {
-            Logger.getLogger(Entity.Province.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return strPaging;
+        return null;
     }
 }

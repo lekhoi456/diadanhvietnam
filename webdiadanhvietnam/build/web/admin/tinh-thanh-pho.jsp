@@ -10,15 +10,8 @@
 <%@page import="Utils.ConnectDB"%>
 <%@page import="java.sql.Connection"%>
 <%
-    int p = 1;
-    String s = "";
-    String sortColumn = "";
-    if (request.getParameter("page") != null) {
-        p = Integer.parseInt(request.getParameter("page"));
-    }
-    Connection conn = ConnectDB.getConnection();
-    ProvinceModel provinceModel = new ProvinceModel(conn);
-    ArrayList<Province> provinceArrayList = provinceModel.getPaging(p, s, sortColumn);
+    ProvinceModel provinceModel = new ProvinceModel();
+    ArrayList<Province> provinceArrayList = provinceModel.getList();
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -89,14 +82,13 @@
                                 </thead>
                                 <tbody>
                                     <%
-                                        int numberOfProvince = (p - 1) * ProvinceModel.numberInPaging;
+                                        int numeric = 0;
                                         for (Province ls : provinceArrayList) {
-                                            ++numberOfProvince;
-
+                                            ++numeric;
                                     %>
                                     <tr>
                                         <td></td>
-                                        <td><%=numberOfProvince%>
+                                        <td><%=numeric%>
                                         </td>
                                         <td class="product-img"><img src="../imgs/province/<%=ls.getThumbnail()%>">
                                         </td>

@@ -3,21 +3,26 @@
     Created on : Nov 11, 2019, 9:44:32 AM
     Author     : KhoiLeQuoc
 --%>
-<%@page import="Entity.Landscape"%>
-<%@page import="java.util.ArrayList"%>
+<%@page import="Model.PostModel"%>
+<%@page import="Model.ProvinceModel"%>
 <%@page import="Model.LandscapeModel"%>
+<%@page import="Entity.Post"%>
+<%@page import="Entity.Landscape"%>
+<%@page import="Entity.Province"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="Utils.ConnectDB"%>
 <%@page import="java.sql.Connection"%>
 <%
-    int p = 1;
-    String s = "";
-    String sortColumn = "";
-    if (request.getParameter("page") != null) {
-        p = Integer.parseInt(request.getParameter("page"));
-    }
-    Connection conn = ConnectDB.getConnection();
-    LandscapeModel landscapeModel = new LandscapeModel(conn);
-    ArrayList<Landscape> landscapeArrayList = landscapeModel.getPaging(p, s, sortColumn);
+    PostModel postModel = new PostModel();
+    ArrayList<Post> postArrayList = postModel.getList();
+    
+    LandscapeModel landscapeModel = new LandscapeModel();
+    ArrayList<Landscape> landscapeArrayList = landscapeModel.getList();
+    
+    ProvinceModel provinceModel = new ProvinceModel();
+    ArrayList<Province> provinceArrayList = provinceModel.getList();
+   
+    
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -94,19 +99,42 @@
                     <h2 class="title uppercase">Bài viết mới</h2>
                 </div>
                 <div class="row">
-                    <div class="col-lg-4 col-md-6 col-sm-12 blogBox moreBox">
-                        <div class="article-grid mb-42">
-                            <div class="hover-grow">
-                                <a href="standard-post.html"><img src="imgs/recent-articles/1.jpg"
-                                                                  alt="Recent Articles"></a>
-                            </div>
-                            <div class="article-content">
-                                <div class="categories">
-                                    <ul>
+                    
+                    <%
+                        int numPostGrid = 0;
+                        for (Post ls : postArrayList) {
+                            ++numPostGrid;
+                            out.println("<div class='col-lg-4 col-md-6 col-sm-12 blogBox moreBox'>");
+                                out.println("<div class='article-grid mb-42'>");
+                                    out.println("<div class='hover-grow'>");
+                                        out.println("<a href='" + ls.getGuid() + "'><img src='imgs/post-image/" + ls.getThumbnail() + "' alt='" + ls.getTitle() + "'></a>");
+                                    out.println("</div>");
+                                    out.println("<div class='article-content'>");
+                                        out.println("<div class='categories'>");
+                                            out.println("<ul>");
+                                                out.println("<li><a href='./" + ls.getGuid()  + "'>" + "đây là tên tỉnh/thành phố" + "</a></li>");
+                                                out.println("<li><a href='./" + ls.getGuid()  + "'>" + "đây là tên địa hình" + "</a></li>");
+                                            out.println("</ul>");
+                                        out.println("</div>");
+                                    out.println("</div>");
+                                out.println("</div>");
+                            out.println("</div>");
+                    }%>
+                    
+                    
+                    <!--<div class="col-lg-4 col-md-6 col-sm-12 blogBox moreBox">-->
+                        <!--<div class="article-grid mb-42">-->
+                            <!--<div class="hover-grow">-->
+<!--                                <a href="standard-post.html"><img src="imgs/recent-articles/1.jpg"
+                                                                  alt="Recent Articles"></a>-->
+                            <!--</div>-->
+                            <!--<div class="article-content">-->
+                                <!--<div class="categories">-->
+<!--                                    <ul>
                                         <li><a href="categories.html">Business</a></li>
                                         <li><a href="categories.html">Lifestyle</a></li>
-                                    </ul>
-                                </div>
+                                    </ul>-->
+                                <!--</div>-->
                                 <div class="post-date-author">
                                     <ul>
                                         <li><i class="fa fa-calendar"></i>June 28, 2019</li>
@@ -119,9 +147,9 @@
                                     On the other hand, we denounce with righteous indig nation the foult anuals dislike men
                                     who are so be guiled and demoralized
                                 </div>
-                            </div>
-                        </div>
-                    </div><!-- Item 1 end -->
+                            <!--</div>-->
+                        <!--</div>-->
+<!--                    </div> Item 1 end -->
                     
                 </div>
             </div>

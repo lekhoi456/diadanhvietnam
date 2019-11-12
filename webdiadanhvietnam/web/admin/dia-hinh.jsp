@@ -10,15 +10,8 @@
 <%@page import="Utils.ConnectDB"%>
 <%@page import="java.sql.Connection"%>
 <%
-    int p = 1;
-    String s = "";
-    String sortColumn = "";
-    if (request.getParameter("page") != null) {
-        p = Integer.parseInt(request.getParameter("page"));
-    }
-    Connection conn = ConnectDB.getConnection();
-    LandscapeModel landscapeModel = new LandscapeModel(conn);
-    ArrayList<Landscape> landscapeArrayList = landscapeModel.getPaging(p, s, sortColumn);
+    LandscapeModel landscapeModel = new LandscapeModel();
+    ArrayList<Landscape> landscapeArrayList = landscapeModel.getList();
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -89,14 +82,13 @@
                                 </thead>
                                 <tbody>
                                     <%
-                                        int numberOfLandscape = (p - 1) * LandscapeModel.numberInPaging;
+                                        int numeric = 0;
                                         for (Landscape ls : landscapeArrayList) {
-                                            ++numberOfLandscape;
-
+                                            ++numeric;
                                     %>
                                     <tr>
                                         <td></td>
-                                        <td><%=numberOfLandscape%>
+                                        <td><%=numeric%>
                                         </td>
                                         <td class="product-img"><img src="../imgs/landscape/<%=ls.getThumbnail()%>">
                                         </td>

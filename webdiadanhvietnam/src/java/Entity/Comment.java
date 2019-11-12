@@ -3,7 +3,7 @@ package Entity;
 import java.sql.Date;
 
 public class Comment {
-    private long comment_id;
+    private long id;
     private long post_id;
     private long user_id;
     private String comment_content;
@@ -13,7 +13,7 @@ public class Comment {
     @Override
     public String toString() {
         return "Comment{" +
-                "comment_id=" + comment_id +
+                "comment_id=" + id +
                 ", post_id=" + post_id +
                 ", user_id=" + user_id +
                 ", comment_content='" + comment_content + '\'' +
@@ -25,7 +25,7 @@ public class Comment {
     public Comment(long comment_id, long post_id, long user_id, String comment_content, Date comment_Date, int comment_status) {
 
 
-        this.comment_id = comment_id;
+        this.id = comment_id;
         this.post_id = post_id;
         this.user_id = user_id;
         this.comment_content = comment_content;
@@ -33,12 +33,12 @@ public class Comment {
         this.comment_status = comment_status;
     }
 
-    public long getComment_id() {
-        return comment_id;
+    public long getId() {
+        return id;
     }
 
-    public void setComment_id(long comment_id) {
-        this.comment_id = comment_id;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public long getPost_id() {

@@ -16,7 +16,7 @@
     if (request.getParameter("page") != null) {
         p = Integer.parseInt(request.getParameter("page"));
     }
-    
+
     PostModel postModel = new PostModel();
     ArrayList<Post> postArrayList = postModel.getList();
 %>
@@ -94,7 +94,6 @@
                                         int numberOfPost = 0;
                                         for (Post ls : postArrayList) {
                                             ++numberOfPost;
-
                                     %>
                                     <tr>
                                         <td></td>
@@ -106,8 +105,19 @@
                                         <td class="product-name"><%=ls.getGuid()%></td>
                                         <td class="product-name"><%=ls.getPost_author()%></td>
                                         <td style="align:center;">
+                                            <%
+                                                if (ls.getStatus() == 2) {
+                                            %>
                                             <a href="#"><i class="ficon feather icon-edit"></i></a>
                                             <a href="#"><i class="ficon feather icon-trash"></i></a>
+                                            <%
+                                                } else if (ls.getStatus() == 0) {
+                                            %>
+                                            <a href="#"><i class="ficon feather icon-edit"></i></a>
+                                            <a href="#"><i class="ficon feather icon-upload"></i></a>
+                                            <%
+                                                    }
+                                            %>
                                         </td>
                                     </tr>
                                     <%

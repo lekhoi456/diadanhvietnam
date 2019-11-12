@@ -105,7 +105,7 @@
                                         <td class="product-name"><%=ls.getGuid()%></td>
                                         <td class="product-name"><%=ls.getPost_author()%></td>
                                         <td style="align:center;">
-                                            <a href="#"><i class="ficon feather icon-edit"></i></a>
+                                            <a href="#"><i class="ficon feather icon-check-square"></i></a>
                                             <a href="#"><i class="ficon feather icon-trash"></i></a>
                                         </td>
                                     </tr>

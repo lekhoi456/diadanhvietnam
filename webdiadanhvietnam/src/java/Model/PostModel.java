@@ -28,6 +28,7 @@ public class PostModel {
         try {
             conn = ConnectDB.getConnection();
             loadPost();
+            loadPostApprove();
         } catch (SQLException ex) {
             Logger.getLogger(PostModel.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -35,7 +36,7 @@ public class PostModel {
 
     private void loadPost() throws SQLException {
         try {
-            String sqlStr = "SELECT * FROM post";
+            String sqlStr = "SELECT * FROM post Where status = 2 OR status = 0";
             this.st = this.conn.createStatement();
             this.rs = this.st.executeQuery(sqlStr);
             postArrayList = new ArrayList<Post>();
@@ -64,7 +65,7 @@ public class PostModel {
             String sqlStr = "SELECT * FROM post WHERE status = 1";
             this.st = this.conn.createStatement();
             this.rs = this.st.executeQuery(sqlStr);
-            postArrayList = new ArrayList<Post>();
+            postApproveArrayList = new ArrayList<Post>();
             while (rs.next()) {
                 long id = rs.getLong("id");
                 String titile = rs.getString("title");

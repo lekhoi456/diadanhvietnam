@@ -1,30 +1,24 @@
 <%-- 
-    Document   : newjsp
-    Created on : Nov 11, 2019, 4:40:52 PM
+    Document   : comment.jsp
+    Created on : Nov 13, 2019, 1:45:28 AM
     Author     : duong
 --%>
 
-<%@page import="Entity.Post"%>
+<%@page import="Entity.Comment"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="Model.PostModel"%>
+<%@page import="Model.CommentModel"%>
 <%@page import="Utils.ConnectDB"%>
 <%@page import="java.sql.Connection"%>
 <%
-    int p = 1;
-    String s = "";
-    String sortColumn = "";
-    if (request.getParameter("page") != null) {
-        p = Integer.parseInt(request.getParameter("page"));
-    }
-    PostModel postApproveModel = new PostModel();
-    ArrayList<Post> postApproveArrayList = postApproveModel.getPostApproveList();
+    CommentModel commentModel = new CommentModel();
+    ArrayList<Comment> landscapeArrayList = commentModel.getList();
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Địa danh Việt Nam >> Bài viết chờ duyệt</title>
+        <title>Địa danh Việt Nam >> Bình luận</title>
         <jsp:include page="include.jsp"/>
     </head>
     <body class="vertical-layout vertical-menu-modern 2-columns  navbar-floating footer-static  " data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
@@ -39,14 +33,14 @@
                     <div class="content-header-left col-md-12 col-12 mb-2">
                         <div class="row breadcrumbs-top">
                             <div class="col-12">
-                                <h2 class="content-header-title float-left mb-0">Bài viết</h2>
+                                <h2 class="content-header-title float-left mb-0">Vùng</h2>
                                 <div class="breadcrumb-wrapper col-12">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="#">Bảng điều khiển</a>
                                         </li>
-                                        <li class="breadcrumb-item"><a href="#">Bài viết</a>
+                                        <li class="breadcrumb-item"><a href="#">Chuyên mục</a>
                                         </li>
-                                        <li class="breadcrumb-item active">Bài viết chờ duyệt
+                                        <li class="breadcrumb-item active">Vùng
                                         </li>
                                     </ol>
                                 </div>
@@ -73,39 +67,35 @@
                             </div>
                         </div>
                         <!-- dataTable starts -->
-                         <div class="table-responsive">
+                        <div class="table-responsive">
                             <table class="table data-thumb-view">
                                 <thead>
                                     <tr>
                                         <th></th>
                                         <th>#</th>
-                                        <th>Ảnh đại diện</th>
                                         <th>Tên bài</th>
                                         <th>Nội dung</th>
-                                        <th>Ngày đăng</th>
-                                        <th>Đường dẫn tĩnh</th>
-                                        <th>Tác giả</th>
+                                        <th>Tên người comment</th>
+                                        <th>Thời gian</th>
                                         <th>Quản trị</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <%
-                                        int numberOfPostApprove = 0;
-                                        for (Post ls : postApproveArrayList) {
-                                            ++numberOfPostApprove;
-
+                                        int numeric = 0;
+                                        for (Comment ls : landscapeArrayList) {
+                                            ++numeric;
                                     %>
                                     <tr>
                                         <td></td>
-                                        <td><%=numberOfPostApprove%></td>
-                                        <td class="product-img"><img src=".../imgs/post-image/<%=ls.getThumbnail()%>" width="145" height="100"></td>
-                                        <<td class="product-name"><%=ls.getTitle()%></td>
-                                        <td class="product-name"><%=ls.getDescription()%></td>
-                                        <td class="product-name"><%=ls.getPost_date()%></td>
-                                        <td class="product-name"><%=ls.getGuid()%></td>
-                                        <td class="product-name"><%=ls.getPost_author()%></td>
+                                        <td><%=numeric%>
+                                        </td>
+                                        <td class="product-name"><%=ls.getPost_id()%></td>
+                                        <td class="product-name"><%=ls.getComment_content()%></td>
+                                        <td class="product-name"><%=ls.getUser_id()%></td>
+                                        <td class="product-name"><%=ls.getComment_date()%></td>
                                         <td style="align:center;">
-                                            <a href="#"><i class="ficon feather icon-check-square"></i></a>
+                                            <a href="#"><i class="ficon feather icon-edit"></i></a>
                                             <a href="#"><i class="ficon feather icon-trash"></i></a>
                                         </td>
                                     </tr>
@@ -175,3 +165,4 @@
         <jsp:include page="footer.jsp"/>
     </body>
 </html>
+

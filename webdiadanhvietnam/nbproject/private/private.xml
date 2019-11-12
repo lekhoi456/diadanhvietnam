@@ -3,16 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/KhoiLeQuoc/Documents/GitHub/diadanhvietnam/webdiadanhvietnam/web/admin/login-process.jsp</file>
-            <file>file:/C:/Users/KhoiLeQuoc/Documents/GitHub/diadanhvietnam/webdiadanhvietnam/web/WEB-INF/web.xml</file>
-            <file>file:/C:/Users/KhoiLeQuoc/Documents/GitHub/diadanhvietnam/webdiadanhvietnam/web/admin/dang-ky.jsp</file>
-            <file>file:/C:/Users/KhoiLeQuoc/Documents/GitHub/diadanhvietnam/webdiadanhvietnam/web/admin/bang-dieu-khien.jsp</file>
-            <file>file:/C:/Users/KhoiLeQuoc/Documents/GitHub/diadanhvietnam/webdiadanhvietnam/src/java/Model/ProvinceModel.java</file>
-            <file>file:/C:/Users/KhoiLeQuoc/Documents/GitHub/diadanhvietnam/webdiadanhvietnam/web/admin/include.jsp</file>
-            <file>file:/C:/Users/KhoiLeQuoc/Documents/GitHub/diadanhvietnam/webdiadanhvietnam/web/admin/dang-xuat.jsp</file>
-            <file>file:/C:/Users/KhoiLeQuoc/Documents/GitHub/diadanhvietnam/webdiadanhvietnam/web/admin/index.jsp</file>
-            <file>file:/C:/Users/KhoiLeQuoc/Documents/GitHub/diadanhvietnam/webdiadanhvietnam/web/admin/dang-nhap.jsp</file>
-            <file>file:/C:/Users/KhoiLeQuoc/Documents/GitHub/diadanhvietnam/webdiadanhvietnam/web/index.jsp</file>
+            <file>file:/C:/Users/duong/Desktop/diadanhvietnam/webdiadanhvietnam/web/admin/dia-hinh.jsp</file>
+            <file>file:/C:/Users/duong/Desktop/diadanhvietnam/webdiadanhvietnam/web/admin/approve-post.jsp</file>
+            <file>file:/C:/Users/duong/Desktop/diadanhvietnam/webdiadanhvietnam/web/admin/comment.jsp</file>
+            <file>file:/C:/Users/duong/Desktop/diadanhvietnam/webdiadanhvietnam/src/java/Model/CommentModel.java</file>
         </group>
     </open-files>
 </project-private>

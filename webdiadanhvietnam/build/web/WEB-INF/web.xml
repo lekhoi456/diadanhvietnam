@@ -3,7 +3,7 @@
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
-    
+
     <servlet>
         <servlet-name>about</servlet-name>
         <jsp-file>/gioi-thieu.jsp</jsp-file>
@@ -20,6 +20,33 @@
     <servlet-mapping>
         <servlet-name>contact</servlet-name>
         <url-pattern>/lien-he</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>dia-hinh</servlet-name>
+        <jsp-file>/dia-hinh.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>dia-hinh</servlet-name>
+        <url-pattern>/dia-hinh</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>tinh-thanh-pho</servlet-name>
+        <jsp-file>/tinh-thanh-pho.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>tinh-thanh-pho</servlet-name>
+        <url-pattern>/tinh-thanh-pho</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>bai-viet</servlet-name>
+        <jsp-file>/bai-viet.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>bai-viet</servlet-name>
+        <url-pattern>/bai-viet</url-pattern>
     </servlet-mapping>
     
     <servlet>
@@ -84,6 +111,16 @@
         <servlet-name>admin_tinh_thanh_pho</servlet-name>
         <url-pattern>/admin/tinh-thanh-pho</url-pattern>
     </servlet-mapping>
+        
+    <error-page>
+        <error-code>404</error-code>
+        <location>/error-404.jsp</location>
+    </error-page>
+   
+    <error-page>
+        <exception-type>java.lang.Throwable</exception-type>
+        <location>/error-404.jsp</location>
+    </error-page>
     
     <session-config>
         <session-timeout>

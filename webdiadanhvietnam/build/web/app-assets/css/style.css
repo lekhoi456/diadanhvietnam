@@ -4430,7 +4430,7 @@ blockquote i:before {
     19. Error 404 CSS 
 --------------------------------------*/
 .rs-page-error {
-  background: url(../../imgs/404.jpg);
+  background-color: #fff;
   background-repeat: no-repeat;
   background-size: cover;
   padding: 127px 0 145px 0;

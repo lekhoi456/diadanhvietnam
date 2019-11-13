@@ -67,6 +67,7 @@ public class ProvinceModel {
             if (provinceId == ls.getId()) {
                 return ls.getName();
             }
+            break;
         }
         return null;
     }
@@ -76,6 +77,7 @@ public class ProvinceModel {
             if (provinceId == ls.getId()) {
                 return ls.getGuid();
             }
+            break;
         }
         return null;
     }
@@ -85,6 +87,7 @@ public class ProvinceModel {
             if (provinceId == ls.getId()) {
                 return ls.getThumbnail();
             }
+            break;
         }
         return null;
     }

@@ -16,7 +16,7 @@
                     <div class="col-lg-3 hidden-md">
                         <div class="left-menu">
                             <div class="logo-area text-center">
-                                <a href="/"><img src="imgs/logo.png" alt="logo"></a>
+                                <a href="./"><img src="imgs/logo.png" alt="logo"></a>
                             </div>
                         </div>
                     </div>

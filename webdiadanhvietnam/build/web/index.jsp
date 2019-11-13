@@ -27,7 +27,8 @@
 
     UserModel userModel = new UserModel();
     ArrayList<User> userArrayList = userModel.getList();
-
+    
+    SimpleDateFormat dFormat = new SimpleDateFormat("dd/MM/yyyy");
 
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -84,7 +85,7 @@
                     <%                                for (Landscape ls : landscapeArrayList) {
                             out.println("<div class='single-category hover-grow'>");
                             out.println("<div class='category-part'>");
-                            out.println("<a href='/dia-hinh?guid=" + ls.getGuid() + "'><img src='./imgs/landscape/" + ls.getThumbnail() + "' alt='" + ls.getName() + "'></a>");
+                            out.println("<a href='./dia-hinh?guid=" + ls.getGuid() + "'><img src='./imgs/landscape/" + ls.getThumbnail() + "' alt='" + ls.getName() + "'></a>");
                             out.println("<div class='category-title'>");
                             out.println("<h3><a href='/dia-hinh?guid=" + ls.getGuid() + "'>" + ls.getName() + "</a></h3>");
                             out.println("</div>");
@@ -105,7 +106,6 @@
                 </div>
                 <div class="row">
                     <%
-                        SimpleDateFormat dFormat = new SimpleDateFormat("dd/MM/yyyy");
                         for (int i = postArrayList.size() - 1; i > postArrayList.size() - 7; i--) {%>
                     <div class="col-lg-4 col-md-6 col-sm-12 blogBox moreBox">
                         <div class="article-grid mb-42">

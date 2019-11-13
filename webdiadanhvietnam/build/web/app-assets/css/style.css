@@ -2785,7 +2785,7 @@ blockquote i:before {
 }
 
 .comment-block .comment-list .single-comment .comment-text .comment-meta {
-  float: right;
+  float: left;
 }
 
 .comment-block .comment-list .single-comment .comment-text .comment-meta time {

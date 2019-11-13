@@ -66,7 +66,6 @@ public class LandscapeModel {
             if (landscapeId == ls.getId()) {
                 return ls.getName();
             }
-            break;
         }
         return null;
     }
@@ -77,7 +76,6 @@ public class LandscapeModel {
             if (landscapeId == ls.getId()) {
                 return ls.getGuid();
             }
-            break;
         }
         return null;
     }
@@ -87,7 +85,6 @@ public class LandscapeModel {
             if (landscapeId == ls.getId()) {
                 return ls.getThumbnail();
             }
-            break;
         }
         return null;
     }

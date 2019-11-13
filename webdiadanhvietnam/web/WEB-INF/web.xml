@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <welcome-file-list>
-        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>/index.jsp</welcome-file>
     </welcome-file-list>
 
     <servlet>
@@ -11,6 +11,15 @@
     <servlet-mapping>
         <servlet-name>about</servlet-name>
         <url-pattern>/gioi-thieu</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>dang-binh-luan-process</servlet-name>
+        <jsp-file>/dang-binh-luan-process.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>dang-binh-luan-process</servlet-name>
+        <url-pattern>/dang-binh-luan</url-pattern>
     </servlet-mapping>
     
     <servlet>

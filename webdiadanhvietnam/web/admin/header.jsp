@@ -49,15 +49,17 @@
     <div class="shadow-bottom"></div>
     <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-            <li class=" nav-item"><a href="../admin/index.jsp"><i class="feather icon-home"></i><span class="menu-title">Bảng điều khiển</span></a></li>
+            <li class=" nav-item"><a href="../admin/bang-dieu-khien.jsp"><i class="feather icon-home"></i><span class="menu-title">Bảng điều khiển</span></a></li>
             <li class=" navigation-header"><span>Quản trị nội dung</span>
             </li>
 
             <li class=" nav-item"><a href="../admin/all-post.jsp"><i class="feather icon-edit"></i><span class="menu-title">Bài viết</span></a>
                 <ul class="menu-content">
-                    <li class=" nav-item"><a href="../admin/all-post.jsp"><i class="feather icon-list"></i><span class="menu-title">Tất cả Bài viết</span></a>
+                    <li class=" nav-item"><a href="../admin/"><i class="feather icon-list"></i><span class="menu-title">Bài viết đã đăng</span></a>
                     </li>
-                    <li class=" nav-item"><a href="../admin/add-post.jsp"><i class="feather icon-edit"></i><span class="menu-title">Bài viết mới</span></a>
+                    <li class=" nav-item"><a href="../admin/add-post.jsp"><i class="feather icon-upload"></i><span class="menu-title">Thêm bài viết mới</span></a>
+                    </li>
+                    <li class=" nav-item"><a href="../admin/approve-post.jsp"><i class="feather icon-edit"></i><span class="menu-title">Bài viết chờ duyệt</span></a>
                     </li>
                 </ul>
             </li>
@@ -79,6 +81,12 @@
             </li>
 
             <li class=" nav-item"><a href="../admin/comment.jsp"><i class="feather icon-message-square"></i><span class="menu-title">Bình luận</span></a>
+                <ul class="menu-content">
+                     <li class=" nav-item"><a href="../admin/comment.jsp"><i class="feather icon-list"></i><span class="menu-title">Bình luận đã duyệt</span></a>
+                     </li>
+                     <li class=" nav-item"><a href="../admin/approve-comment.jsp"><i class="feather icon-edit"></i><span class="menu-title">Bình luận chờ duyệt</span></a>
+                     </li>
+                </ul>
             </li>
             <li class=" nav-item"><a href="#"><i class="feather icon-list"></i><span class="menu-title">Chuyên mục</span></a>
                 <ul class="menu-content">

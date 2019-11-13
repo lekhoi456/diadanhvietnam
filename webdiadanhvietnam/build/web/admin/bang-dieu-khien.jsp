@@ -3,7 +3,9 @@
     Created on : Nov 7, 2019, 10:59:42 AM
     Author     : KhoiLeQuoc
 --%>
-
+<%
+    response.sendRedirect("../admin/");
+%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

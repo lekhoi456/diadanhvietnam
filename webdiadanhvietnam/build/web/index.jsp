@@ -170,7 +170,7 @@
                                 </div>
                                 <div class="row">
                                     <%
-                                        for (int i = postArrayList.size() - 8; i > postArrayList.size() - 20; i--) {%>
+                                        for (int i = postArrayList.size() - 8; i > postArrayList.size() - 16; i--) {%>
                                     <div class="col-lg-6 col-md-6 blogBox moreBox">
                                         <div class="article-grid mb-42">
                                             <div class="hover-grow">

@@ -20,10 +20,7 @@
     String guid = "";
     guid = "cau-trang-tien-hue";
     CommentModel commentModel = new CommentModel();
-    System.out.println("NO CO VAO DUOC BUOC NAY KHONG");
-        System.out.println("da vao trong nay");
         commentModel.addComment(post_id, user_id, comment_content);
-        System.out.println("OK đã thêm comment");
     
 %>
 <!DOCTYPE html>

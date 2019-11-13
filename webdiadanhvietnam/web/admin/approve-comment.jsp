@@ -95,7 +95,7 @@
                                         <td class="product-name"><%=commentModel.getNameById(ls.getUser_id())%></td>
                                         <td class="product-name"><%=ls.getComment_date()%>></td>
                                         <td style="align:center;">
-                                            <a href="comment-processing.jsp?id=<%=ls.getId()%>&comment_status=1"><i class="ficon feather icon-check-square"></i></a>
+                                            <a href="comment-processing.jsp?id=<%=ls.getId()%>&comment_status=2"><i class="ficon feather icon-check-square"></i></a>
                                             <a href="comment-processing.jsp?id=<%=ls.getId()%>&comment_status=0"><i class="ficon feather icon-trash"></i></a>
                                         </td>
                                     </tr>

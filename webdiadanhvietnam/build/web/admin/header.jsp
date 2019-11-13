@@ -7,8 +7,8 @@
                 <div class="mr-auto float-left bookmark-wrapper d-flex align-items-center">
 
                     <ul class="nav navbar-nav bookmark-icons">
-                        <li class="nav-item d-none d-lg-block"><a class="nav-link" href="../admin/new-post.jsp" data-toggle="tooltip" data-placement="top" title="Thêm bài viết mới"><i class="ficon feather icon-edit"></i></a></li>
-                        <li class="nav-item d-none d-lg-block"><a class="nav-link" href="../index.jsp" target="_blank" data-toggle="tooltip" data-placement="top" title="Xem trang chủ"><i class="ficon feather icon-external-link"></i></a></li>
+                        <li class="nav-item d-none d-lg-block"><a class="nav-link" href="../admin/add-post.jsp" data-toggle="tooltip" data-placement="top" title="Thêm bài viết mới"><i class="ficon feather icon-edit"></i></a></li>
+                        <li class="nav-item d-none d-lg-block"><a class="nav-link" href="../" target="_blank" data-toggle="tooltip" data-placement="top" title="Xem trang chủ"><i class="ficon feather icon-external-link"></i></a></li>
                     </ul>
                 </div>
                 <ul class="nav navbar-nav float-right">

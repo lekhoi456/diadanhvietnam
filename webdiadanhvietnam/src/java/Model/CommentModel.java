@@ -21,6 +21,7 @@ public class CommentModel {
         try {
             conn = ConnectDB.getConnection();
             loadComment();
+            loadCommentApprove();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -131,7 +132,7 @@ public class CommentModel {
             this.rs = this.st.executeQuery(sqlStr);
             while(rs.next()){
                 username = rs.getString("username");
-            }
+            }   
                     } catch (SQLException ex) {
             Logger.getLogger(PostModel.class.getName()).log(Level.SEVERE, null, ex);
         }

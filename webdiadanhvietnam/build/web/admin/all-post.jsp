@@ -93,6 +93,7 @@
                                     <%
                                         int numberOfPost = 0;
                                         for (Post ls : postArrayList) {
+                                            if (ls.getStatus() == 2) {
                                             ++numberOfPost;
                                     %>
                                     <tr>
@@ -105,23 +106,12 @@
                                         <td class="product-name"><%=ls.getGuid()%></td>
                                         <td class="product-name"><%=postModel.getNameById(ls.getPost_author())%></td>
                                         <td style="align:center;">
-                                            <%
-                                                if (ls.getStatus() == 2) {
-                                            %>
                                             <a href="#"><i class="ficon feather icon-edit"></i></a>
-                                            <a href="#"><i class="ficon feather icon-trash"></i></a>
-                                            <%
-                                                } else if (ls.getStatus() == 0) {
-                                            %>
-                                            <a href="#"><i class="ficon feather icon-edit"></i></a>
-                                            <a href="#"><i class="ficon feather icon-upload"></i></a>
-                                            <%
-                                                    }
-                                            %>
+                                            <a href="approve-post-processing.jsp?id=<%=ls.getId()%>&status=0"><i class="ficon feather icon-trash"></i></a>
                                         </td>
                                     </tr>
                                     <%
-                                        }
+                                        }}
                                     %>
                                 </tbody>
                             </table>

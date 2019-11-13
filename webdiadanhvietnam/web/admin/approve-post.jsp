@@ -1,6 +1,6 @@
 <%-- 
-    Document   : newjsp
-    Created on : Nov 11, 2019, 4:40:52 PM
+    Document   : all-post
+    Created on : Nov 11, 2019, 4:26:28 PM
     Author     : duong
 --%>
 
@@ -16,15 +16,16 @@
     if (request.getParameter("page") != null) {
         p = Integer.parseInt(request.getParameter("page"));
     }
-    PostModel postApproveModel = new PostModel();
-    ArrayList<Post> postApproveArrayList = postApproveModel.getPostApproveList();
+
+    PostModel postModel = new PostModel();
+    ArrayList<Post> postArrayList = postModel.getList();
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Địa danh Việt Nam >> Bài viết chờ duyệt</title>
+        <title>Địa danh Việt Nam >> Bài viết đã đăng</title>
         <jsp:include page="include.jsp"/>
     </head>
     <body class="vertical-layout vertical-menu-modern 2-columns  navbar-floating footer-static  " data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
@@ -39,7 +40,7 @@
                     <div class="content-header-left col-md-12 col-12 mb-2">
                         <div class="row breadcrumbs-top">
                             <div class="col-12">
-                                <h2 class="content-header-title float-left mb-0">Bài viết</h2>
+                                <h2 class="content-header-title float-left mb-0">Bài viết chờ duyệt</h2>
                                 <div class="breadcrumb-wrapper col-12">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="#">Bảng điều khiển</a>
@@ -73,7 +74,7 @@
                             </div>
                         </div>
                         <!-- dataTable starts -->
-                         <div class="table-responsive">
+                        <div class="table-responsive">
                             <table class="table data-thumb-view">
                                 <thead>
                                     <tr>
@@ -90,27 +91,29 @@
                                 </thead>
                                 <tbody>
                                     <%
-                                        int numberOfPostApprove = 0;
-                                        for (Post ls : postApproveArrayList) {
-                                            ++numberOfPostApprove;
-
+                                        int numberOfPost = 0;
+                                        for (Post ls : postArrayList) {
+                                            if (ls.getStatus() == 1) {
+                                            ++numberOfPost;
                                     %>
                                     <tr>
                                         <td></td>
-                                        <td><%=numberOfPostApprove%></td>
+                                        <td><%=numberOfPost%></td>
                                         <td class="product-img"><img src=".../imgs/post-image/<%=ls.getThumbnail()%>" width="145" height="100"></td>
-                                        <td class="product-name"><%=ls.getTitle()%></td>
+                                        <<td class="product-name"><%=ls.getTitle()%></td>
                                         <td class="product-name"><%=ls.getDescription()%></td>
                                         <td class="product-name"><%=ls.getPost_date()%></td>
                                         <td class="product-name"><%=ls.getGuid()%></td>
-                                        <td class="product-name"><%=postApproveModel.getNameById(ls.getPost_author())%></td>
+                                        <td class="product-name"><%=postModel.getNameById(ls.getPost_author())%></td>
                                         <td style="align:center;">
-                                            <a href="#"><i class="ficon feather icon-check-square"></i></a>
-                                            <a href="#"><i class="ficon feather icon-trash"></i></a>
+                                            
+                                            <a href="approve-post-processing.jsp?id=<%=ls.getId()%>&status=2"><i class="ficon feather icon-edit"></i></a>
+                                            <a href="approve-post-processing.jsp?id=<%=ls.getId()%>&status=0"><i class="ficon feather icon-trash"></i></a>
+                                            
                                         </td>
                                     </tr>
                                     <%
-                                        }
+                                        }}
                                     %>
                                 </tbody>
                             </table>
@@ -123,48 +126,18 @@
                             <div class="add-new-data">
                                 <div class="div mt-2 px-2 d-flex new-data-title justify-content-between">
                                     <div>
-                                        <h4>Thêm mới vùng</h4>
-                                    </div>
-                                    <div class="hide-data-sidebar">
-                                        <i class="feather icon-x"></i>
-                                    </div>
-                                </div>
-                                <div class="data-items pb-3">
-                                    <div class="data-fields px-2 mt-3">
-                                        <div class="row">
-                                            <div class="col-sm-12 data-field-col">
-                                                <label for="data-name">Tên vùng</label>
-                                                <input type="text" class="form-control" id="data-name">
+                                        <div class="add-data-footer d-flex justify-content-around px-5">
+                                            <div class="add-data-btn">
+                                                <button class="btn btn-primary">Thêm mới</button>
                                             </div>
-
-                                            <div class="col-sm-12 data-field-col">
-                                                <label for="data-name">Mô tả</label>
-                                                <input type="textarea" class="form-control" id="data-name">
-                                            </div>
-
-                                            <div class="col-sm-12 data-field-col">
-                                                <label for="data-name">Đường dẫn tĩnh</label>
-                                                <input type="text" class="form-control" id="data-name">
-                                            </div>
-                                            <div class="col-sm-12 data-field-col data-list-upload">
-                                                <form action="#" class="dropzone dropzone-area" id="dataListUpload">
-                                                    <div class="dz-message">Ảnh đại diện</div>
-                                                </form>
+                                            <div class="cancel-data-btn">
+                                                <button class="btn btn-outline-danger">Hủy bỏ</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="add-data-footer d-flex justify-content-around px-5">
-                                    <div class="add-data-btn">
-                                        <button class="btn btn-primary">Thêm mới</button>
-                                    </div>
-                                    <div class="cancel-data-btn">
-                                        <button class="btn btn-outline-danger">Hủy bỏ</button>
-                                    </div>
-                                </div>
                             </div>
-                        </div>
-                        <!-- add new sidebar ends -->
+                            <!-- add new sidebar ends -->
                     </section>
                     <!-- Data list view end -->
 

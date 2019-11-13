@@ -1,6 +1,6 @@
 <%-- 
-    Document   : comment.jsp
-    Created on : Nov 13, 2019, 1:45:28 AM
+    Document   : approve-comment
+    Created on : Nov 13, 2019, 2:31:45 PM
     Author     : duong
 --%>
 
@@ -11,14 +11,14 @@
 <%@page import="java.sql.Connection"%>
 <%
     CommentModel commentModel = new CommentModel();
-    ArrayList<Comment> commentArrayList = commentModel.getList();
+    ArrayList<Comment> commentApproveArrayList = commentModel.getApproveList();
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Địa danh Việt Nam >> Bình luận</title>
+        <title>Địa danh Việt Nam >> Bình luận đã duyệt</title>
         <jsp:include page="include.jsp"/>
     </head>
     <body class="vertical-layout vertical-menu-modern 2-columns  navbar-floating footer-static  " data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
@@ -33,7 +33,7 @@
                     <div class="content-header-left col-md-12 col-12 mb-2">
                         <div class="row breadcrumbs-top">
                             <div class="col-12">
-                                <h2 class="content-header-title float-left mb-0">Bình luận</h2>
+                                <h2 class="content-header-title float-left mb-0">Bình luận đã duyệt</h2>
                                 <div class="breadcrumb-wrapper col-12">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="#">Bảng điều khiển</a>
@@ -83,7 +83,7 @@
                                 <tbody>
                                     <%
                                         int numeric = 0;
-                                        for (Comment ls : commentArrayList) {
+                                        for (Comment ls : commentApproveArrayList) {
                                             ++numeric;
                                     %>
                                     <tr>
@@ -93,9 +93,9 @@
                                         <td class="product-name"><%=commentModel.getNamePostById(ls.getPost_id())%></td>
                                         <td class="product-name"><%=ls.getComment_content()%></td>
                                         <td class="product-name"><%=commentModel.getNameById(ls.getUser_id())%></td>
-                                        <td class="product-name"><%=ls.getComment_date()%>></td>
+                                        <td class="product-name"><%=ls.getComment_date()%></td>
                                         <td style="align:center;">
-                                            <a href="#"><i class="ficon feather icon-edit"></i></a>
+                                            <a href="comment-processing.jsp?id=<%=ls.getId()%>&comment_status=2"><i class="ficon feather icon-check-square"></i></a>
                                             <a href="comment-processing.jsp?id=<%=ls.getId()%>&comment_status=0"><i class="ficon feather icon-trash"></i></a>
                                         </td>
                                     </tr>
@@ -165,4 +165,3 @@
         <jsp:include page="footer.jsp"/>
     </body>
 </html>
-

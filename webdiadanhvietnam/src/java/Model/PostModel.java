@@ -17,6 +17,7 @@ import java.util.logging.Logger;
  * @author duong
  */
 public class PostModel {
+
     public ArrayList<Post> postArrayList = new ArrayList<>();
     public ArrayList<Post> postApproveArrayList = new ArrayList<>();
     private static Connection conn;
@@ -24,7 +25,7 @@ public class PostModel {
     private static ResultSet rs;
     private static PreparedStatement pst;
 
-     public PostModel() {
+    public PostModel() {
         try {
             conn = ConnectDB.getConnection();
             loadPost();
@@ -50,19 +51,19 @@ public class PostModel {
                 long post_author = rs.getInt("post_author");
                 long landscape_id = rs.getInt("landscape_id");
                 long province_id = rs.getInt("province_id");
-                byte status  = rs.getByte("status");
+                byte status = rs.getByte("status");
                 postArrayList.add(new Post(id, titile, description, thumbnail, content, post_author, guid, post_date, status, landscape_id, province_id));
             }
         } catch (SQLException se) {
             throw se;
         }
-        
+
     }
-    
+
     public ArrayList<Post> getList() {
         return this.postArrayList;
     }
-    
+
     private void loadPostApprove() throws SQLException {
         try {
             String sqlStr = "SELECT * FROM post WHERE status = 1";
@@ -80,30 +81,44 @@ public class PostModel {
                 long post_author = rs.getInt("post_author");
                 long landscape_id = rs.getInt("landscape_id");
                 long province_id = rs.getInt("province_id");
-                byte status  = rs.getByte("status");
+                byte status = rs.getByte("status");
                 postApproveArrayList.add(new Post(id, titile, description, thumbnail, content, post_author, guid, post_date, status, landscape_id, province_id));
             }
         } catch (SQLException se) {
             throw se;
         }
-        
+
     }
-    
-        public String getNameById(long id) {
+
+    public void setStatus(long id, byte status) {
+        String sqlStr = "UPDATE `post` SET `status`= ? WHERE id = ?";
+        try {
+            this.pst = conn.prepareStatement(sqlStr);
+            pst.setByte(1, status);
+            pst.setLong(2, id);
+            pst.executeUpdate();
+            loadPostApprove();
+            loadPost();
+        } catch (SQLException ex) {
+            Logger.getLogger(PostModel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public String getNameById(long id) {
         String username = "";
         try {
-            String sqlStr = "SELECT username FROM user WHERE id =" + id ;
+            String sqlStr = "SELECT username FROM user WHERE id =" + id;
             this.st = this.conn.createStatement();
             this.rs = this.st.executeQuery(sqlStr);
-            while(rs.next()){
+            while (rs.next()) {
                 username = rs.getString("username");
             }
-                    } catch (SQLException ex) {
+        } catch (SQLException ex) {
             Logger.getLogger(PostModel.class.getName()).log(Level.SEVERE, null, ex);
         }
         return username;
     }
-        
+
     public ArrayList<Post> getPostApproveList() {
         return this.postApproveArrayList;
     }

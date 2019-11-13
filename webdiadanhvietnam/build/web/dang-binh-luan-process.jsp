@@ -14,7 +14,7 @@
     
     request.setCharacterEncoding("UTF-8");
     long post_id = 16;
-    long user_id = 1;
+    long user_id = 2;
     String comment_content = "";
     comment_content = request.getParameter("message");
     String guid = "";

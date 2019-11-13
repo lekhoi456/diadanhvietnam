@@ -32,8 +32,8 @@
                                     <ul class="nav-menu text-center">
                                         <li class="menu-item"> <a href="./" class="home">Trang chủ</a></li>
                                         <li class="menu-item"><a href="./gioi-thieu">Giới thiệu</a></li>
-                                        <li class="menu-item"> <a href="./dia-hinh">Địa hình</a></li>
-                                        <li class="menu-item"> <a href="./tinh-thanh-pho">Tỉnh/Thành phố</a></li>
+                                        <li class="menu-item"> <a href="./dia-hinh?guid=dong-bang">Địa hình</a></li>
+                                        <li class="menu-item"> <a href="./tinh-thanh-pho?guid=thua-thien-hue">Tỉnh/Thành phố</a></li>
                                         <li class="menu-item"><a href="./lien-he">Liên hệ</a></li>
                                     </ul>
                                 </nav>

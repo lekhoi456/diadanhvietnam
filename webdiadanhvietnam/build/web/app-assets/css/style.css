@@ -419,6 +419,11 @@ ul {
 }
 
 .hover-grow img {
+    min-height: 230px;
+    max-height: 230px;
+    min-width: 370px;
+    max-width: 370px;
+    
   -webkit-transform: scale(1);
   transform: scale(1);
   -webkit-transition: 0.3s ease-in-out;
@@ -431,6 +436,7 @@ ul {
 }
 
 .hover-shine figure {
+  
   position: relative;
   overflow: hidden;
   margin: 0;
@@ -2420,7 +2426,10 @@ blockquote i:before {
 }
 
 .rs-articles .article-sidebar .popular-post .single-post .post-image {
+  min-width: 140px;
   max-width: 140px;
+  min-height : 140px;
+  max-height: 140px;
   margin-right: 15px;
 }
 
@@ -3155,6 +3164,10 @@ blockquote i:before {
 }
 
 .rs-team .single-team .team-img img {
+    min-height: 350px;
+    max-height: 350px;
+    max-width: 370px;
+    min-width: 370px;
   border-radius: 3px 3px 0 0;
 }
 

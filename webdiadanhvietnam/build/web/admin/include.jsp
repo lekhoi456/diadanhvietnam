@@ -6,7 +6,7 @@
 <%
     }
 %>
-<link rel="shortcut icon" type="image/x-icon" href="../admin/app-assets/images/ico/favicon.ico">
+<link rel="shortcut icon" type="image/x-icon" href="../../imgs/banner/favicon.png">
 <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600" rel="stylesheet">
 <!-- BEGIN: Vendor CSS-->
 <link rel="stylesheet" type="text/css" href="../admin/app-assets/vendors/css/vendors.min.css">

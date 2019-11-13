@@ -34,7 +34,6 @@
                                         <li class="menu-item"><a href="./gioi-thieu">Giới thiệu</a></li>
                                         <li class="menu-item"> <a href="./dia-hinh">Địa hình</a></li>
                                         <li class="menu-item"> <a href="./tinh-thanh-pho">Tỉnh/Thành phố</a></li>
-                                        <li class="menu-item"> <a href="https://www.saigontourist.net/tour-trong-nuoc" target="_blank">Tour Du Lịch</a></li>
                                         <li class="menu-item"><a href="./lien-he">Liên hệ</a></li>
                                     </ul>
                                 </nav>

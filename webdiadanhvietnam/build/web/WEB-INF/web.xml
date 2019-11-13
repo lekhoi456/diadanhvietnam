@@ -5,6 +5,24 @@
     </welcome-file-list>
     
     <servlet>
+        <servlet-name>about</servlet-name>
+        <jsp-file>/gioi-thieu.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>about</servlet-name>
+        <url-pattern>/gioi-thieu</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>contact</servlet-name>
+        <jsp-file>/lien-he.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>contact</servlet-name>
+        <url-pattern>/lien-he</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
         <servlet-name>admin</servlet-name>
         <jsp-file>/admin/index.jsp</jsp-file>
     </servlet>

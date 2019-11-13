@@ -32,7 +32,7 @@
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 
     <head>
         <!-- meta tag -->
@@ -45,8 +45,8 @@
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- favicon -->
-        <link rel="apple-touch-icon" href="apple-touch-icon.png">
-        <link rel="shortcut icon" type="image/x-icon" href="imgs/fav.png">
+        <link rel="apple-touch-icon" href="./imgs/favicon.png">
+        <link rel="shortcut icon" type="image/x-icon" href="./imgs/favicon.png">
         <jsp:include page="include.jsp"/>
     </head>
     <body>
@@ -56,7 +56,7 @@
             <div class="container">
                 <div class="banner-content">
                     <div class="author-img">
-                        <img src="imgs/banner/logo.png" alt="Author Image">
+                        <img src="imgs/banner/logo-be.png" alt="Địa danh Việt Nam logo">
                     </div>
                     <div class="content-part">
                         <div class="sub-top">Traveling throughout Vietnam</div>
@@ -64,7 +64,7 @@
                         <p class="author-desc">Có một Việt Nam tươi đẹp như thế: Chúng tôi tạo ra blog này với mục đích giới thiệu cho bạn những địa điểm du dịch ở Việt Nam. Blog cũng là nơi cộng đồng đam mê du lịch chia sẻ những địa điểm mới, tươi đẹp trên khắp dãy đất hình chữ S.
                         </p>
                         <div class="banner-btn">
-                            <a class="readon" href="#">Về chúng tôi</a>
+                            <a class="readon" href="./gioi-thieu">Về chúng tôi</a>
                         </div>
                     </div>
                 </div>
@@ -84,9 +84,9 @@
                     <%                                for (Landscape ls : landscapeArrayList) {
                             out.println("<div class='single-category hover-grow'>");
                             out.println("<div class='category-part'>");
-                            out.println("<a href='/dia-hinh?dh=" + ls.getGuid() + "'><img src='./imgs/landscape/" + ls.getThumbnail() + "' alt='" + ls.getName() + "'></a>");
+                            out.println("<a href='/dia-hinh?guid=" + ls.getGuid() + "'><img src='./imgs/landscape/" + ls.getThumbnail() + "' alt='" + ls.getName() + "'></a>");
                             out.println("<div class='category-title'>");
-                            out.println("<h3><a href='/dia-hinh?dh=" + ls.getGuid() + "'>" + ls.getName() + "</a></h3>");
+                            out.println("<h3><a href='/dia-hinh?guid=" + ls.getGuid() + "'>" + ls.getName() + "</a></h3>");
                             out.println("</div>");
                             out.println("</div>");
                             out.println("</div>");
@@ -101,119 +101,104 @@
         <div id="rs-articles" class="rs-articles home2style pt-67 pb-61">
             <div class="container">
                 <div class="sec-title text-center">
-                    <h2 class="title uppercase">Bài viết mới</h2>
+                    <h2 class="title uppercase">Địa điểm Check-in mới</h2>
                 </div>
                 <div class="row">
-
                     <%
-                        int numPostGrid = 0;
-                        for (Post ls : postArrayList) {
-                            if (ls.getStatus() == 1) {
-                                ++numPostGrid;
-                                if (numPostGrid < 7) {
-                                    out.println("<div class='col-lg-4 col-md-6 col-sm-12 blogBox moreBox'>");
-                                    out.println("<div class='article-grid mb-42'>");
-                                    out.println("<div class='hover-grow'>");
-                                    out.println("<a href='" + ls.getGuid() + "'><img src='imgs/post-image/" + ls.getThumbnail() + "' alt='" + ls.getTitle() + "'></a>");
-                                    out.println("</div>");
-                                    out.println("<div class='article-content'>");
-                                    out.println("<div class='categories'>");
-                                    out.println("<ul>");
-                                    out.println("<li><a href='./dia-hinh?dh=" + provinceModel.getGuidById(ls.getLandscape_id()) + "'>" + provinceModel.getNameById(ls.getLandscape_id()) + "</a></li>");
-                                    out.println("<li><a href='./tinh-thanh-pho?ttp=" + landscapeModel.getGuidById(ls.getProvince_id()) + "'>" + landscapeModel.getNameById(ls.getProvince_id()) + "</a></li>");
-                                    out.println("</ul>");
-                                    out.println("</div>");
-                                    out.println("<div class='post-date-author'>");
-                                    out.println("<ul>");
-                                    SimpleDateFormat dFormat = new SimpleDateFormat("dd/MM/yyyy");
-                                    out.println("<li><i class='fa fa-calendar'></i>" + dFormat.format(ls.getPost_date()) + "</li>");
-                                    out.println("<li><a href='./user?user=" + userModel.getUsernameById(ls.getPost_author()) + "'><i class='fa fa-user-o'></i>" + userModel.getDisplaynameById(ls.getPost_author()) + "</a></li>");
-                                    out.println("</ul>");
-                                    out.println("</div>");
-                                    out.println("<h3 class='article-title'><a href='" + ls.getGuid() + "'>" + ls.getTitle() + "</a></h3>");
-                                    out.println("<div class='desc'> " + ls.getDescription() + "</div>");
-                                    out.println("</div>");
-                                    out.println("</div>");
-                                    out.println("</div>");
-                                } else if (numPostGrid == 7) {
-
-                                }
-                            }
-                        }%>
+                        SimpleDateFormat dFormat = new SimpleDateFormat("dd/MM/yyyy");
+                        for (int i = postArrayList.size() - 1; i > postArrayList.size() - 7; i--) {%>
+                    <div class="col-lg-4 col-md-6 col-sm-12 blogBox moreBox">
+                        <div class="article-grid mb-42">
+                            <div class="hover-grow">
+                                <a href="./bai-viet?guid=<%=postArrayList.get(i).getGuid()%>"><img src="./imgs/post-image/<%=postArrayList.get(i).getThumbnail()%>" alt="<%=postArrayList.get(i).getTitle()%>"></a>
+                            </div>
+                            <div class="article-content">
+                                <div class="categories">
+                                    <ul>
+                                        <li><a href="./dia-hinh?guid=<%=landscapeModel.getGuidById(postArrayList.get(i).getLandscape_id())%>"><%=landscapeModel.getNameById(postArrayList.get(i).getLandscape_id())%></a></li>
+                                        <li><a href="./tinh-thanh-pho?guid=<%=provinceModel.getGuidById(postArrayList.get(i).getProvince_id())%>"><%=provinceModel.getNameById(postArrayList.get(i).getProvince_id())%></a></li>
+                                    </ul>
+                                </div>
+                                <div class="post-date-author">
+                                    <ul>
+                                        <li><i class="fa fa-calendar"></i><%=dFormat.format(postArrayList.get(i).getPost_date())%></li>
+                                        <li><a href="./thanh-vien?userId=<%=userModel.getUsernameById(postArrayList.get(i).getPost_author())%>"><i class="fa fa-user-o"></i><%=userModel.getDisplaynameById(postArrayList.get(i).getPost_author())%></a></li>
+                                    </ul>
+                                </div>
+                                <h3 class="article-title"><a href="./bai-viet?guid=<%=postArrayList.get(i).getGuid()%>"><%=postArrayList.get(i).getTitle()%></a></h3>
+                                <div class="desc">
+                                    <%=postArrayList.get(i).getDescription()%>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <%}%>
                 </div>
             </div>
-        </div><!-- .rs-articles -->
-        <!-- Recent Aricle End -->
+        </div>
 
-        <!-- Recent Articles Start -->
         <div id="rs-articles" class="rs-articles home2style pb-60">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 md-mb-30">
                         <div class="article-grid hover-shine mb-40">
                             <figure>
-                                <a href="standard-post.html"><img src="imgs/recent-articles/single-article/1.jpg"
-                                                                  alt="Single Articles"></a>
+                                <a href="./bai-viet?guid=<%=postArrayList.get(postArrayList.size() - 7).getGuid()%>"><img src="./imgs/post-image/<%=postArrayList.get(postArrayList.size() - 7).getThumbnail()%>" alt="<%=postArrayList.get(postArrayList.size() - 7).getTitle()%>"></a>
                             </figure>
                             <div class="article-content">
                                 <div class="categories">
                                     <ul>
-                                        <li><a href="categories.html">Business</a></li>
-                                        <li><a href="categories.html">Lifestyle</a></li>
+                                        <li><a href="./dia-hinh?guid=<%=landscapeModel.getGuidById(postArrayList.get(postArrayList.size() - 7).getLandscape_id())%>"><%=landscapeModel.getNameById(postArrayList.get(postArrayList.size() - 7).getLandscape_id())%></a></li>
+                                        <li><a href="./tinh-thanh-pho?guid=<%=provinceModel.getGuidById(postArrayList.get(postArrayList.size() - 7).getProvince_id())%>"><%=provinceModel.getNameById(postArrayList.get(postArrayList.size() - 7).getProvince_id())%></a></li>
+
                                     </ul>
                                 </div>
                                 <div class="post-date-author">
                                     <ul>
-                                        <li><i class="fa fa-calendar"></i>June 28, 2019</li>
-                                        <li><a href="#"><i class="fa fa-user-o"></i>Yammi Guan</a></li>
-                                        <li><a href="#">10 Comments</a></li>
+                                        <li><i class="fa fa-calendar"></i><%=dFormat.format(postArrayList.get(6).getPost_date())%></li>
+                                        <li><a href="./thanh-vien?userId=<%=userModel.getUsernameById(postArrayList.get(6).getPost_author())%>"><i class="fa fa-user-o"></i><%=userModel.getDisplaynameById(postArrayList.get(6).getPost_author())%></a></li>
+
                                     </ul>
                                 </div>
-                                <h2 class="article-title title-single-style"><a href="standard-post.html">Turned on MacBook
-                                        Pro Near Black Framed Eyeglasses</a></h2>
+                                <h2 class="article-title title-single-style"><a href="./bai-viet?guid=<%=postArrayList.get(6).getGuid()%>"><%=postArrayList.get(6).getTitle()%></a></h2>
+
                                 <p class="desc">
-                                    On the other hand, we denounce with righteous indignation the foult anuals dislike men
-                                    who are so beguiled and demoralized by the nuhaiicharms of pleasure of the moment, so
-                                    blinded by desire, that they cannot foresee the pain and trouble that are bound toen
-                                    sue; and equal blame belongs to those who fail in their duty.
+                                    <%=postArrayList.get(6).getDescription()%>
                                 </p>
                                 <div class="continue-btn">
-                                    <a class="readon" href="#">Continue Reading</a>
+                                    <a class="readon" href="./bai-viet?guid=<%=postArrayList.get(6).getGuid()%>">Đọc thêm</a>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6 blogBox moreBox">
-                                <div class="article-grid hover-shine mb-45">
-                                    <figure>
-                                        <a href="standard-post.html"><img src="imgs/recent-articles/13.jpg"
-                                                                          alt="Recent Articles"></a>
-                                    </figure>
-                                    <div class="article-content">
-                                        <div class="categories">
-                                            <ul>
-                                                <li><a href="categories.html">Business</a></li>
-                                                <li><a href="categories.html">Lifestyle</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="post-date-author">
-                                            <ul>
-                                                <li><i class="fa fa-calendar"></i>June 28, 2019</li>
-                                                <li><a href="#"><i class="fa fa-user-o"></i>Yammi Guan</a></li>
-                                            </ul>
-                                        </div>
-                                        <h3 class="article-title"><a href="standard-post.html">Man in Red Plaid Shirt
-                                                Talking Phone on Terrace</a></h3>
-                                        <div class="desc">
-                                            On the other hand, we denounce with righteous indig nation the foult anuals
-                                            dislike men who are so be guiled and demoralized
+                                <div class="row">
+                                    <%
+                                        for (int i = postArrayList.size() - 8; i > postArrayList.size() - 20; i--) {%>
+                                    <div class="col-lg-6 col-md-6 blogBox moreBox">
+                                        <div class="article-grid mb-42">
+                                            <div class="hover-grow">
+                                                <a href="./bai-viet?guid=<%=postArrayList.get(i).getGuid()%>"><img src="./imgs/post-image/<%=postArrayList.get(i).getThumbnail()%>" alt="<%=postArrayList.get(i).getTitle()%>"></a>
+                                            </div>
+                                            <div class="article-content">
+                                                <div class="categories">
+                                                    <ul>
+                                                        <li><a href="./dia-hinh?guid=<%=landscapeModel.getGuidById(postArrayList.get(i).getLandscape_id())%>"><%=landscapeModel.getNameById(postArrayList.get(i).getLandscape_id())%></a></li>
+                                                        <li><a href="./tinh-thanh-pho?guid=<%=provinceModel.getGuidById(postArrayList.get(i).getProvince_id())%>"><%=provinceModel.getNameById(postArrayList.get(i).getProvince_id())%></a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="post-date-author">
+                                                    <ul>
+                                                        <li><i class="fa fa-calendar"></i><%=dFormat.format(postArrayList.get(i).getPost_date())%></li>
+                                                        <li><a href="./thanh-vien?userId=<%=userModel.getUsernameById(postArrayList.get(i).getPost_author())%>"><i class="fa fa-user-o"></i><%=userModel.getDisplaynameById(postArrayList.get(i).getPost_author())%></a></li>
+                                                    </ul>
+                                                </div>
+                                                <h3 class="article-title"><a href="./bai-viet?guid=<%=postArrayList.get(i).getGuid()%>"><%=postArrayList.get(i).getTitle()%></a></h3>
+                                                <div class="desc">
+                                                    <%=postArrayList.get(i).getDescription()%>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
+                                    <%}%>
                                 </div>
                             </div>
-                        </div>
-                        <div id="loadMore" class="loadmore-btn text-center mt-40">
-                            <a class="readon loadmore" href="#">Load More</a>
                         </div>
                     </div>
                     <div class="col-lg-4">
@@ -224,11 +209,11 @@
                                 </div>
                                 <div class="author-img hover-shine text-center">
                                     <figure>
-                                        <a href="#"><img src="imgs/banner/logo.png" alt="Địa Danh Việt Nam"></a>
+                                        <a href="./gioi-thieu"><img src="imgs/logo.png" alt="Địa Danh Việt Nam"></a>
                                     </figure>
                                 </div>
                                 <div class="author-desc text-center">
-                                    <p>Có một Việt Nam tươi đẹp như thế: Chúng tôi tạo ra blog này với mục đích giới thiệu cho bạn những địa điểm du dịch ở Việt Nam. Blog cũng là nơi cộng đồng đam mê du lịch chia sẻ những địa điểm mới, tươi đẹp trên khắp dãy đất hình chữ S.</p>
+                                    <p>Blog Địa danh Việt Nam là nơi cộng đồng đam mê du lịch chia sẻ những địa điểm mới, tươi đẹp trên khắp Việt Nam.</p>
                                 </div>
                             </div>
                             <div class="sidebar-newsletter mb-40">
@@ -245,30 +230,34 @@
                             </div>
                             <div class="popular-post mb-50">
                                 <div class="sidebar-title text-center">
-                                    <h3 class="title uppercase">Bài viết được xem nhiều</h3>
+                                    <h3 class="title uppercase">Địa điểm được quan tâm</h3>
                                 </div>
+                                <%
+                                    for (int i = 1; i < 10; i++) {%>
                                 <div class="single-post mb-18">
                                     <div class="post-image hover-grow">
-                                        <a href="standard-post.html"><img src="imgs/blog/1.jpg" alt="post image"></a>
+                                        <a href="./bai-viet?guid=<%=postArrayList.get(i).getGuid()%>"><img src="./imgs/post-image/<%=postArrayList.get(i).getThumbnail()%>" alt="<%=postArrayList.get(i).getTitle()%>"></a>
                                     </div>
                                     <div class="post-desc">
                                         <ul>
-                                            <li><i class="fa fa-calendar"></i>June 28, 2019</li>
-                                            <li><a href="#"><i class="fa fa-user-o"></i>Admin</a></li>
+                                            <li><i class="fa fa-calendar"></i><%=dFormat.format(postArrayList.get(i).getPost_date())%></li>
+                                            <li><a href="./thanh-vien?userId=<%=userModel.getUsernameById(postArrayList.get(i).getPost_author())%>"><i class="fa fa-user-o"></i><%=userModel.getDisplaynameById(postArrayList.get(i).getPost_author())%></a></li>
                                         </ul>
                                         <div class="post-title">
-                                            <h5 class="margin-0"><a href="standard-post.html">Duo Scripta An The Ditos
-                                                    Prieirmod...</a></h5>
+                                            <h5 class="margin-0"><a href="./bai-viet?guid=<%=postArrayList.get(i).getGuid()%>"><%=postArrayList.get(i).getTitle()%></a></h5>
                                         </div>
                                     </div>
                                 </div>
-
+                                <%}%>
                             </div>
                             <div class="add-banner mb-40">
+                                <div class="sidebar-title text-center">
+                                    <h3 class="uppercase margin-0">ADS</h3>
+                                </div>
                                 <div class="add-img hover-shine text-center">
                                     <figure>
-                                        <a href="#"><img src="imgs/banner/add-banner.jpg"
-                                                         alt="Add Banner Image"></a>
+                                        <a href="#"><img src="imgs/ads.jpg"
+                                                         alt="Ads here"></a>
                                     </figure>
                                 </div>
                             </div>
@@ -277,7 +266,10 @@
                                     <h3 class="title uppercase mb-20">Địa hình</h3>
                                 </div>
                                 <ul class="category-tags">
-                                    <li><a href="categories.html"># Business <span>(05)</span></a></li>
+                                    <% for (Landscape ls : landscapeArrayList) {%>
+                                    <li><a href="./dia-hinh?guid=<%=ls.getGuid()%>"># <%=ls.getName()%></a></li>
+                                    <%}
+                                    %>
                                 </ul>
                             </div>
                         </div>

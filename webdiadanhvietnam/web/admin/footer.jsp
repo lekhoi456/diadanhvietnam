@@ -22,6 +22,12 @@
 <!-- BEGIN Vendor JS-->
 
 <!-- BEGIN: Page Vendor JS-->
+<script src="../admin/app-assets/vendors/js/editors/quill/katex.min.js"></script>
+    <script src="../admin/app-assets/vendors/js/editors/quill/highlight.min.js"></script>
+    <script src="../admin/app-assets/vendors/js/editors/quill/quill.min.js"></script>
+    <script src="../admin/app-assets/vendors/js/extensions/jquery.steps.min.js"></script>
+    <script src="../admin/app-assets/vendors/js/forms/validation/jquery.validate.min.js"></script>
+
 <script src="../admin/app-assets/vendors/js/extensions/dropzone.min.js"></script>
 <script src="../admin/app-assets/vendors/js/tables/datatable/datatables.min.js"></script>
 <script src="../admin/app-assets/vendors/js/tables/datatable/datatables.buttons.min.js"></script>
@@ -38,6 +44,7 @@
 
 <!-- BEGIN: Page JS-->
 <script src="../admin/app-assets/js/scripts/ui/data-list-view.js"></script>
+<script src="../admin/app-assets/js/scripts/editors/editor-quill.js"></script>
 <!-- END: Page JS-->
 <script>
     $(document).ready(function() {

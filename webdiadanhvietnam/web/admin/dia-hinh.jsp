@@ -90,7 +90,7 @@
                                         <td></td>
                                         <td><%=numeric%>
                                         </td>
-                                        <td class="product-img"><img src="../imgs/landscape/<%=ls.getThumbnail()%>">
+                                        <td class="product-img"><img src="../imgs/landscape/<%=ls.getThumbnail()%>" height="150px" width="180px">
                                         </td>
                                         <td class="product-name"><%=ls.getName()%></td>
                                         <td class="product-name"><%=ls.getDescription()%></td>

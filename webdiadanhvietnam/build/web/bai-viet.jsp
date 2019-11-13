@@ -162,7 +162,7 @@
                             <div class="post-article-part">
                                 <%
                                     int recentPostId = 1;
-                                    if (postIdObj == postArrayList.size() - 1) {
+                                    if (postIdObj > postArrayList.size() - 3) {
                                         recentPostId = -4;
                                     }
                                     for (int i = 0; i < 3; i++) {

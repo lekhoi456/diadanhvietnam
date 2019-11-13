@@ -106,7 +106,9 @@
                 </div>
                 <div class="row">
                     <%
-                        for (int i = postArrayList.size() - 1; i > postArrayList.size() - 7; i--) {%>
+                        for (int i = postArrayList.size() - 1; i > postArrayList.size() - 7; i--) {
+                            if (postArrayList.get(i).getStatus()==2)
+    {%>
                     <div class="col-lg-4 col-md-6 col-sm-12 blogBox moreBox">
                         <div class="article-grid mb-42">
                             <div class="hover-grow">
@@ -132,7 +134,7 @@
                             </div>
                         </div>
                     </div>
-                    <%}%>
+                    <%}}%>
                 </div>
             </div>
         </div>
@@ -155,22 +157,23 @@
                                 </div>
                                 <div class="post-date-author">
                                     <ul>
-                                        <li><i class="fa fa-calendar"></i><%=dFormat.format(postArrayList.get(6).getPost_date())%></li>
-                                        <li><a href="./thanh-vien?userId=<%=userModel.getUsernameById(postArrayList.get(6).getPost_author())%>"><i class="fa fa-user-o"></i><%=userModel.getDisplaynameById(postArrayList.get(6).getPost_author())%></a></li>
+                                        <li><i class="fa fa-calendar"></i><%=dFormat.format(postArrayList.get(postArrayList.size() - 7).getPost_date())%></li>
+                                        <li><a href="./thanh-vien?userId=<%=userModel.getUsernameById(postArrayList.get(postArrayList.size() - 7).getPost_author())%>"><i class="fa fa-user-o"></i><%=userModel.getDisplaynameById(postArrayList.get(postArrayList.size() - 7).getPost_author())%></a></li>
 
                                     </ul>
                                 </div>
-                                <h2 class="article-title title-single-style"><a href="./bai-viet?guid=<%=postArrayList.get(6).getGuid()%>"><%=postArrayList.get(6).getTitle()%></a></h2>
+                                <h2 class="article-title title-single-style"><a href="./bai-viet?guid=<%=postArrayList.get(postArrayList.size() - 7).getGuid()%>"><%=postArrayList.get(postArrayList.size() - 7).getTitle()%></a></h2>
 
                                 <p class="desc">
-                                    <%=postArrayList.get(6).getDescription()%>
+                                    <%=postArrayList.get(postArrayList.size() - 7).getDescription()%>
                                 </p>
                                 <div class="continue-btn">
-                                    <a class="readon" href="./bai-viet?guid=<%=postArrayList.get(6).getGuid()%>">Đọc thêm</a>
+                                    <a class="readon" href="./bai-viet?guid=<%=postArrayList.get(postArrayList.size() - 7).getGuid()%>">Đọc thêm</a>
                                 </div>
                                 <div class="row">
                                     <%
-                                        for (int i = postArrayList.size() - 8; i > postArrayList.size() - 16; i--) {%>
+                                        for (int i = postArrayList.size() - 8; i > postArrayList.size() - 16; i--) {
+                                            if (postArrayList.get(i).getStatus()==2) {%>
                                     <div class="col-lg-6 col-md-6 blogBox moreBox">
                                         <div class="article-grid mb-42">
                                             <div class="hover-grow">
@@ -196,7 +199,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <%}%>
+                                    <%}}%>
                                 </div>
                             </div>
                         </div>
@@ -233,7 +236,7 @@
                                     <h3 class="title uppercase">Địa điểm được quan tâm</h3>
                                 </div>
                                 <%
-                                    for (int i = 1; i < 10; i++) {%>
+                                    for (int i = 1; i < 6; i++) {%>
                                 <div class="single-post mb-18">
                                     <div class="post-image hover-grow">
                                         <a href="./bai-viet?guid=<%=postArrayList.get(i).getGuid()%>"><img src="./imgs/post-image/<%=postArrayList.get(i).getThumbnail()%>" alt="<%=postArrayList.get(i).getTitle()%>"></a>

@@ -28,6 +28,10 @@
         <script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
         <title>Địa danh Việt Nam >> Bài viết chờ duyệt</title>
         <jsp:include page="include.jsp"/>
+        <link rel="stylesheet" type="text/css" href="../admin/app-assets/vendors/css/editors/quill/katex.min.css">
+        <link rel="stylesheet" type="text/css" href="../admin/app-assets/vendors/css/editors/quill/monokai-sublime.min.css">
+        <link rel="stylesheet" type="text/css" href="../admin/app-assets/vendors/css/editors/quill/quill.snow.css">
+        <link rel="stylesheet" type="text/css" href="../admin/app-assets/vendors/css/editors/quill/quill.bubble.css">
     </head>
     <body class="vertical-layout vertical-menu-modern 2-columns  navbar-floating footer-static  " data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
 
@@ -69,50 +73,78 @@
                             </div>
                         </div>
                         <!-- dataTable starts -->
-                        
-                            <h1>Classic editor</h1>
-                            <ul class="nav nav-tabs">
-                                <li class="active"><a data-toggle="tabs" href="#content">Nội dung bài viết</a></li>
-                                <li><a data-toggle="tabs" href="#code">Code html</a></li>
-                            </ul>
-                            
-                               
-                                    <textarea name="content" id="editor" placeholder="This is some sample content">
-                                    </textarea>
-                                
 
-                                
-                                    <textarea  name="editor2" id="editor2" rows="10" cols="80"></textarea>
-                               
-                            <button type="button" id="submit">Get Data</button>
-                            <script>
-                                let editor;
 
-                                ClassicEditor
-                                        .create(document.querySelector('#editor'))
-                                        .then(newEditor => {
-                                            editor = newEditor;
-                                        })
-                                        .catch(error => {
-                                            console.error(error);
-                                        });
 
-                                // Assuming there is a <button id="submit">Submit</button> in your application.
-                                document.querySelector('#submit').addEventListener('click', () => {
-                                    const editorData = editor.getData();
-                                    $("#editor2").val(editorData);
-                                    // ...
-                                });
-                            </script>
-                        </div>
-                        <!-- dataTable ends -->
-                    </section>
-                    <!-- Data list view end -->
+                        <section id="basic-tabs-components">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="card overflow-hidden">
+                                        <div class="card-content">
+                                            <div class="card-body">
+                                                <ul class="nav nav-tabs" role="tablist">
+                                                    <li class="nav-item">
+                                                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" aria-controls="home" role="tab" aria-selected="true">Trình soạn thảo</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" aria-controls="profile" role="tab" aria-selected="false">Plain code</a>
+                                                    </li>
+                                                </ul>
+                                                <div class="tab-content">
+                                                    <div class="tab-pane active" id="home" aria-labelledby="home-tab" role="tabpanel">
+                                                        <!-- full Editor start -->
+                                                        <section class="full-editor">
+                                                            <div class="row">
+                                                                <div class="col-12">
+                                                                    <div class="card">
+                                                                        <div class="card-content collapse show">
+                                                                            <div class="card-body">
+                                                                                <div class="row">
+                                                                                    <div class="col-sm-12">
+                                                                                        <div id="full-wrapper">
+                                                                                            <div id="full-container">
+                                                                                                <div class="editor">
+                                                                                                    </br></br></br></br></br></br></br></br></br></br></br>
+                                                                                                    </br></br></br></br></br></br></br></br></br></br></br>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </section>
+                                                        <!-- full Editor end -->
 
+
+                                                    </div>
+                                                    <div class="tab-pane" id="profile" aria-labelledby="profile-tab" role="tabpanel">
+                                                        <textarea  name="editor2" id="editor2" rows="10" cols="180" width="100%"></textarea>
+
+                                                    </div>
+                                                    <button type="button" class="btn bg-gradient-primary mr-1 mb-1 waves-effect waves-light">Đăng bài viết</button>
+                                                    <button type="button" class="btn bg-gradient-danger mr-1 mb-1 waves-effect waves-light">Hủy bỏ</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
                 </div>
+
             </div>
-        </div>
-        <!-- END: Content-->
-        <jsp:include page="footer.jsp"/>
-    </body>
+            <!-- dataTable ends -->
+        </section>
+        <!-- Data list view end -->
+
+    </div>
+</div>
+</div>
+<!-- END: Content-->
+<jsp:include page="footer.jsp"/>
+</body>
 </html>

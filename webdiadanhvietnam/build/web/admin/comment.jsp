@@ -11,7 +11,7 @@
 <%@page import="java.sql.Connection"%>
 <%
     CommentModel commentModel = new CommentModel();
-    ArrayList<Comment> landscapeArrayList = commentModel.getList();
+    ArrayList<Comment> commentArrayList = commentModel.getList();
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -33,14 +33,14 @@
                     <div class="content-header-left col-md-12 col-12 mb-2">
                         <div class="row breadcrumbs-top">
                             <div class="col-12">
-                                <h2 class="content-header-title float-left mb-0">Vùng</h2>
+                                <h2 class="content-header-title float-left mb-0">Bình luận</h2>
                                 <div class="breadcrumb-wrapper col-12">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="#">Bảng điều khiển</a>
                                         </li>
-                                        <li class="breadcrumb-item"><a href="#">Chuyên mục</a>
+                                        <li class="breadcrumb-item"><a href="#">Bình luận</a>
                                         </li>
-                                        <li class="breadcrumb-item active">Vùng
+                                        <li class="breadcrumb-item active">Bình luận đã duyệt
                                         </li>
                                     </ol>
                                 </div>
@@ -83,20 +83,20 @@
                                 <tbody>
                                     <%
                                         int numeric = 0;
-                                        for (Comment ls : landscapeArrayList) {
+                                        for (Comment ls : commentArrayList) {
                                             ++numeric;
                                     %>
                                     <tr>
                                         <td></td>
                                         <td><%=numeric%>
                                         </td>
-                                        <td class="product-name"><%=ls.getPost_id()%></td>
+                                        <td class="product-name"><%=commentModel.getNamePostById(ls.getPost_id())%></td>
                                         <td class="product-name"><%=ls.getComment_content()%></td>
-                                        <td class="product-name"><%=ls.getUser_id()%></td>
-                                        <td class="product-name"><%=ls.getComment_date()%></td>
+                                        <td class="product-name"><%=commentModel.getNameById(ls.getUser_id())%></td>
+                                        <td class="product-name"><%=ls.getComment_date()%>></td>
                                         <td style="align:center;">
                                             <a href="#"><i class="ficon feather icon-edit"></i></a>
-                                            <a href="#"><i class="ficon feather icon-trash"></i></a>
+                                            <a href="comment-processing.jsp?id=<%=ls.getId()%>&comment_status=0"><i class="ficon feather icon-trash"></i></a>
                                         </td>
                                     </tr>
                                     <%

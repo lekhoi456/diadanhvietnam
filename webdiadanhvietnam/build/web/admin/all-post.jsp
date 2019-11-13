@@ -47,7 +47,7 @@
                                         </li>
                                         <li class="breadcrumb-item"><a href="#">Bài viết</a>
                                         </li>
-                                        <li class="breadcrumb-item active">Bài viết chờ duyệt
+                                        <li class="breadcrumb-item active">Bài viết đã đăng
                                         </li>
                                     </ol>
                                 </div>
@@ -103,7 +103,7 @@
                                         <td class="product-name"><%=ls.getDescription()%></td>
                                         <td class="product-name"><%=ls.getPost_date()%></td>
                                         <td class="product-name"><%=ls.getGuid()%></td>
-                                        <td class="product-name"><%=ls.getPost_author()%></td>
+                                        <td class="product-name"><%=postModel.getNameById(ls.getPost_author())%></td>
                                         <td style="align:center;">
                                             <%
                                                 if (ls.getStatus() == 2) {

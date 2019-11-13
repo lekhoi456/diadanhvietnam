@@ -1,31 +1,24 @@
 <%-- 
-    Document   : all-post
-    Created on : Nov 11, 2019, 4:26:28 PM
+    Document   : approve-comment
+    Created on : Nov 13, 2019, 2:31:45 PM
     Author     : duong
 --%>
 
-<%@page import="Entity.Post"%>
+<%@page import="Entity.Comment"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="Model.PostModel"%>
+<%@page import="Model.CommentModel"%>
 <%@page import="Utils.ConnectDB"%>
 <%@page import="java.sql.Connection"%>
 <%
-    int p = 1;
-    String s = "";
-    String sortColumn = "";
-    if (request.getParameter("page") != null) {
-        p = Integer.parseInt(request.getParameter("page"));
-    }
-
-    PostModel postModel = new PostModel();
-    ArrayList<Post> postArrayList = postModel.getList();
+    CommentModel commentModel = new CommentModel();
+    ArrayList<Comment> commentApproveArrayList = commentModel.getApproveList();
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Địa danh Việt Nam >> Bài viết đã đăng</title>
+        <title>Địa danh Việt Nam >> Bình luận</title>
         <jsp:include page="include.jsp"/>
     </head>
     <body class="vertical-layout vertical-menu-modern 2-columns  navbar-floating footer-static  " data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
@@ -40,14 +33,14 @@
                     <div class="content-header-left col-md-12 col-12 mb-2">
                         <div class="row breadcrumbs-top">
                             <div class="col-12">
-                                <h2 class="content-header-title float-left mb-0">Bài viết</h2>
+                                <h2 class="content-header-title float-left mb-0">Bình luận</h2>
                                 <div class="breadcrumb-wrapper col-12">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="#">Bảng điều khiển</a>
                                         </li>
-                                        <li class="breadcrumb-item"><a href="#">Bài viết</a>
+                                        <li class="breadcrumb-item"><a href="#">Bình luận</a>
                                         </li>
-                                        <li class="breadcrumb-item active">Bài viết đã đăng
+                                        <li class="breadcrumb-item active">Bình luận chờ duyệt
                                         </li>
                                     </ol>
                                 </div>
@@ -80,44 +73,30 @@
                                     <tr>
                                         <th></th>
                                         <th>#</th>
-                                        <th>Ảnh đại diện</th>
                                         <th>Tên bài</th>
                                         <th>Nội dung</th>
-                                        <th>Ngày đăng</th>
-                                        <th>Đường dẫn tĩnh</th>
-                                        <th>Tác giả</th>
+                                        <th>Tên người comment</th>
+                                        <th>Thời gian</th>
                                         <th>Quản trị</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <%
-                                        int numberOfPost = 0;
-                                        for (Post ls : postArrayList) {
-                                            ++numberOfPost;
+                                        int numeric = 0;
+                                        for (Comment ls : commentApproveArrayList) {
+                                            ++numeric;
                                     %>
                                     <tr>
                                         <td></td>
-                                        <td><%=numberOfPost%></td>
-                                        <td class="product-img"><img src=".../imgs/post-image/<%=ls.getThumbnail()%>" width="145" height="100"></td>
-                                        <<td class="product-name"><%=ls.getTitle()%></td>
-                                        <td class="product-name"><%=ls.getDescription()%></td>
-                                        <td class="product-name"><%=ls.getPost_date()%></td>
-                                        <td class="product-name"><%=ls.getGuid()%></td>
-                                        <td class="product-name"><%=postModel.getNameById(ls.getPost_author())%></td>
+                                        <td><%=numeric%>
+                                        </td>
+                                        <td class="product-name"><%=commentModel.getNamePostById(ls.getPost_id())%></td>
+                                        <td class="product-name"><%=ls.getComment_content()%></td>
+                                        <td class="product-name"><%=commentModel.getNameById(ls.getUser_id())%></td>
+                                        <td class="product-name"><%=ls.getComment_date()%>></td>
                                         <td style="align:center;">
-                                            <%
-                                                if (ls.getStatus() == 2) {
-                                            %>
-                                            <a href="#"><i class="ficon feather icon-edit"></i></a>
-                                            <a href="#"><i class="ficon feather icon-trash"></i></a>
-                                            <%
-                                                } else if (ls.getStatus() == 0) {
-                                            %>
-                                            <a href="#"><i class="ficon feather icon-edit"></i></a>
-                                            <a href="#"><i class="ficon feather icon-upload"></i></a>
-                                            <%
-                                                    }
-                                            %>
+                                            <a href="comment-processing.jsp?id=<%=ls.getId()%>&comment_status=1"><i class="ficon feather icon-check-square"></i></a>
+                                            <a href="comment-processing.jsp?id=<%=ls.getId()%>&comment_status=0"><i class="ficon feather icon-trash"></i></a>
                                         </td>
                                     </tr>
                                     <%
@@ -134,18 +113,48 @@
                             <div class="add-new-data">
                                 <div class="div mt-2 px-2 d-flex new-data-title justify-content-between">
                                     <div>
-                                        <div class="add-data-footer d-flex justify-content-around px-5">
-                                            <div class="add-data-btn">
-                                                <button class="btn btn-primary">Thêm mới</button>
+                                        <h4>Thêm mới vùng</h4>
+                                    </div>
+                                    <div class="hide-data-sidebar">
+                                        <i class="feather icon-x"></i>
+                                    </div>
+                                </div>
+                                <div class="data-items pb-3">
+                                    <div class="data-fields px-2 mt-3">
+                                        <div class="row">
+                                            <div class="col-sm-12 data-field-col">
+                                                <label for="data-name">Tên vùng</label>
+                                                <input type="text" class="form-control" id="data-name">
                                             </div>
-                                            <div class="cancel-data-btn">
-                                                <button class="btn btn-outline-danger">Hủy bỏ</button>
+
+                                            <div class="col-sm-12 data-field-col">
+                                                <label for="data-name">Mô tả</label>
+                                                <input type="textarea" class="form-control" id="data-name">
+                                            </div>
+
+                                            <div class="col-sm-12 data-field-col">
+                                                <label for="data-name">Đường dẫn tĩnh</label>
+                                                <input type="text" class="form-control" id="data-name">
+                                            </div>
+                                            <div class="col-sm-12 data-field-col data-list-upload">
+                                                <form action="#" class="dropzone dropzone-area" id="dataListUpload">
+                                                    <div class="dz-message">Ảnh đại diện</div>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                <div class="add-data-footer d-flex justify-content-around px-5">
+                                    <div class="add-data-btn">
+                                        <button class="btn btn-primary">Thêm mới</button>
+                                    </div>
+                                    <div class="cancel-data-btn">
+                                        <button class="btn btn-outline-danger">Hủy bỏ</button>
+                                    </div>
+                                </div>
                             </div>
-                            <!-- add new sidebar ends -->
+                        </div>
+                        <!-- add new sidebar ends -->
                     </section>
                     <!-- Data list view end -->
 

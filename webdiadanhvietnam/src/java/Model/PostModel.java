@@ -86,6 +86,21 @@ public class PostModel {
         
     }
     
+        public String getNameById(long id) {
+        String username = "";
+        try {
+            String sqlStr = "SELECT username FROM user WHERE id =" + id ;
+            this.st = this.conn.createStatement();
+            this.rs = this.st.executeQuery(sqlStr);
+            while(rs.next()){
+                username = rs.getString("username");
+            }
+                    } catch (SQLException ex) {
+            Logger.getLogger(PostModel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return username;
+    }
+        
     public ArrayList<Post> getPostApproveList() {
         return this.postApproveArrayList;
     }

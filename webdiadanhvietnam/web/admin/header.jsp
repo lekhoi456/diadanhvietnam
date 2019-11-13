@@ -81,6 +81,12 @@
             </li>
 
             <li class=" nav-item"><a href="../admin/comment.jsp"><i class="feather icon-message-square"></i><span class="menu-title">Bình luận</span></a>
+                <ul class="menu-content">
+                     <li class=" nav-item"><a href="../admin/comment.jsp"><i class="feather icon-list"></i><span class="menu-title">Bình luận đã duyệt</span></a>
+                     </li>
+                     <li class=" nav-item"><a href="../admin/approve-comment.jsp"><i class="feather icon-edit"></i><span class="menu-title">Bình luận chờ duyệt</span></a>
+                     </li>
+                </ul>
             </li>
             <li class=" nav-item"><a href="#"><i class="feather icon-list"></i><span class="menu-title">Chuyên mục</span></a>
                 <ul class="menu-content">

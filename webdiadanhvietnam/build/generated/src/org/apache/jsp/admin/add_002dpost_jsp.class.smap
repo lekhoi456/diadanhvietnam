@@ -1,0 +1,16 @@
+SMAP
+add_002dpost_jsp.java
+JSP
+*S JSP
+*F
++ 0 add-post.jsp
+admin/add-post.jsp
+*L
+5,20:49
+25:69,3
+26,3:72
+29:75,3
+30,130:78
+160:208,3
+161,3:211
+*E

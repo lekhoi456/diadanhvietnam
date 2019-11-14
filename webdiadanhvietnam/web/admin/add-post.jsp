@@ -77,11 +77,17 @@
                             </ul>
                             
                                
+<<<<<<< Updated upstream
                                     <textarea name="content" id="editor" placeholder="This is some sample content">
                                     </textarea>
                                 
 
                                 
+=======
+                            <textarea name="content" id="editor"  rows="10" placeholder="This is some sample content">
+                                    </textarea>
+                            <br><br>
+>>>>>>> Stashed changes
                                     <textarea  name="editor2" id="editor2" rows="10" cols="80"></textarea>
                                
                             <button type="button" id="submit">Get Data</button>
